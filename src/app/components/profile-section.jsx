@@ -27,7 +27,7 @@ export default function ProfileSection() {
               />
             </span>
           </h1>
-          <p className="text-slate-200 text-lg lg:text-xl mb-6">
+          <p className="text-slate-200 text-lg text-justify lg:text-xl mb-6">
             Entusiasta em tecnologia, gosto de aprender e colaborar. Implemento
             soluções Web como Mobile, utilizando as boas práticas em
             metodologias ágeis, com a finalidade de um desenvolvimento mais
@@ -37,7 +37,7 @@ export default function ProfileSection() {
             <button className="px-6 py-3 w:full sm:w-fit rounded-full mr-4 bg-[#751996] hover:bg-[#B319DA] text-white">
               Contrate-me
             </button>
-            <button className="px-6 py-3 w:full sm:w-fit rounded-full bg-transparent  hover:bg-[#B319DA] hover:bg-slate-800 text-white hover:text-[#212121] border border-white hover:border-[#212121] mt-3">
+            <button className="px-6 py-3 w:full sm:w-fit rounded-full bg-transparent  hover:bg-[#B319DA] hover:bg-[#B319DA] text-white hover:text-white border border-white hover:border-[#212121] mt-3">
               Download CV
             </button>
           </div>
