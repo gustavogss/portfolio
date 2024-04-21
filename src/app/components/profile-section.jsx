@@ -9,16 +9,13 @@ export default function ProfileSection() {
       <div className="grid grid-cols-1 sm:grid-cols-12">
         <div className="col-span-7 place-self-center text-center sm:text-left">
           <h1 className="text-slate-100 mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-            Olá, Eu sou {""}
+            Olá, sou {""}
             <span className="text-[#751996]">
-              <br></br>
               <TypeAnimation
                 sequence={[
-                  "Gustavo Souza", // Types 'One'
-                  3000, // Waits 1s
-                  "Web Full Stack Developer", // Deletes 'One' and types 'Two'
-                  3000, // Waits 2s
-                  "Mobile Developer", // Types 'Three' without deleting 'Two'
+                  "Web Full Stack Developer",
+                  3000,
+                  "Mobile Developer",
                   4000,
                 ]}
                 wrapper="span"
@@ -27,11 +24,10 @@ export default function ProfileSection() {
               />
             </span>
           </h1>
-          <p className="text-slate-200 text-lg text-justify lg:text-xl mb-6">
-            Entusiasta em tecnologia, gosto de aprender e colaborar. Implemento
-            soluções Web como Mobile, utilizando as boas práticas em
-            metodologias ágeis, com a finalidade de um desenvolvimento mais
-            produtivo e seguro.
+          <p className="text-white text-lg text-justify lg:text-xl mb-6">
+            Transformo a sua ideia em realidade: desenvolvo soluções web e
+            mobile, utilizando as boas práticas em metodologias ágeis, com
+            design único.{" "}
           </p>
           <div className="">
             <button className="px-6 py-3 w:full sm:w-fit rounded-full mr-4 bg-[#751996] hover:bg-[#B319DA] text-white">

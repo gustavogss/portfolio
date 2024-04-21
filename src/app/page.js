@@ -1,3 +1,4 @@
+import AboutSection from "./components/about-sections";
 import Header from "./components/header";
 import Profile from "./components/profile-section";
 
@@ -7,6 +8,7 @@ export default function Home() {
       <Header />
       <div className="container mx-auto mt-24 py-4 px-12">
         <Profile />
+        <AboutSection />
       </div>
     </main>
   );
