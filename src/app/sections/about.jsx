@@ -1,7 +1,7 @@
 "use client";
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
-import TabButton from "./tab-button";
+import TabButton from "../components/tab-button";
 
 const TAB_DATA = [
   {
@@ -22,21 +22,7 @@ const TAB_DATA = [
       </ul>
     ),
   },
-  {
-    title: "Courses",
-    id: "courses",
-    content: (
-      <ul className="list-disc pl-2 ">
-        <li className="mb-2">
-          Aceleração Java - em formação (Trybe - Assíncrono)
-        </li>
-        <li className="mb-2">
-          Programa Hackers do Bem - em formação (Gov.br e RNP - Assíncrono)
-        </li>
-        <li>Bootcamp Ignite - em formação (Rocketseat - Assíncrono)</li>
-      </ul>
-    ),
-  },
+
   {
     title: "Experience",
     id: "experience",
@@ -75,39 +61,14 @@ const TAB_DATA = [
       <div className="flex flex-row gap-12">
         <ul className="list-disc pl-2">
           {" "}
-          <span className="font-bold">Front-end</span>
           <li>React</li>
-          <li>Next</li>
+          <li>Node</li>
           <li>Typescript</li>
-          <li>Material UI</li>
-          <li>Tailwind</li>
-          <li>Bootstrap</li>
-        </ul>
-        <ul className="list-disc pl-2 ">
-          <span className="font-bold">Back-end</span>
-          <li>Nodejs</li>
           <li>Java</li>
-          <li>Express</li>
           <li>SQL</li>
-          <li>Mysql</li>
-          <li>PostgreSQL</li>
-          <li>Prisma ORM</li>
-          <li>Docker</li>
-        </ul>
-        <ul className="list-disc pl-2 ">
-          <span className="font-bold"> Mobile </span>
           <li>Android</li>
           <li>React Native</li>
-          <li>Flutter</li>
-        </ul>
-        <ul className="list-disc pl-2 ">
-          <span className="font-bold"> Outras </span>
-          <li>Linux</li>
-          <li>Git</li>
-          <li>Git Flow</li>
-          <li>Magento2</li>
-          <li>Scrum, Kaban</li>
-          <li>Pentests</li>
+          <li>Scrum, Kanban</li>
         </ul>
       </div>
     ),
@@ -143,28 +104,22 @@ export default function AboutSection() {
               active={tab === "education"}
             >
               {" "}
-              FORMAÇÃO{" "}
+              Formação{" "}
             </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("courses")}
-              active={tab === "courses"}
-            >
-              {" "}
-              CURSOS{" "}
-            </TabButton>
+
             <TabButton
               selectTab={() => handleTabChange("experience")}
               active={tab === "experience"}
             >
               {" "}
-              EXPERIÊNCIAS{" "}
+              Experiência{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
               {" "}
-              HABILIDADES{" "}
+              Skills{" "}
             </TabButton>
           </div>
           <div className="mt-8">
