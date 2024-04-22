@@ -12,3 +12,4 @@
 - [Resend](https://resend.com/docs/send-with-nextjs)
 
 ## Aplicação:
+[Deploy](https://portfolio-54vlnn309-gustavogss-projects.vercel.app/)
