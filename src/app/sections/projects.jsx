@@ -25,11 +25,11 @@ const data = [
   },
   {
     id: 3,
-    title: "",
-    description: "Project 3 description",
-    image: "/assets/projects/3.png",
+    title: "portfolio",
+    description: "Meu portfólio no github - Next e Tailwind",
+    image: "/assets/projects/5.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/gustavogss/portfolio",
   },
   {
     id: 4,
