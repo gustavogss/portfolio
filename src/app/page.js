@@ -3,6 +3,7 @@ import Header from "./components/header";
 import Profile from "./sections/profile";
 import Projects from "./sections/projects";
 import Email from "./sections/email";
+import Footer from "./sections/footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Projects />
         <Email />
       </div>
+      <Footer />
     </main>
   );
 }
