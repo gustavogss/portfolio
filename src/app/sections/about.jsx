@@ -61,13 +61,14 @@ const TAB_DATA = [
       <div className="flex flex-row gap-12">
         <ul className="list-disc pl-2">
           {" "}
-          <li>React</li>
-          <li>Node</li>
+          <li>React, Next</li>
+          <li>Node, Java</li>
           <li>Typescript</li>
-          <li>Java</li>
-          <li>SQL</li>
-          <li>Android</li>
-          <li>React Native</li>
+          <li>MySQL, SQL, Firebase, Prisma ORM</li>
+          <li>Jest, RTL</li>
+          <li>Android, React Native</li>
+          <li>Tailwind, Styled Components, Material UI</li>
+          <li>Arquitetura: MSC, MVC</li>
           <li>Scrum, Kanban</li>
         </ul>
       </div>
@@ -119,7 +120,7 @@ export default function AboutSection() {
               active={tab === "skills"}
             >
               {" "}
-              Skills{" "}
+              Habilidades{" "}
             </TabButton>
           </div>
           <div className="mt-8">

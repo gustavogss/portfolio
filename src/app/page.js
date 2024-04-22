@@ -2,6 +2,7 @@ import About from "./sections/about";
 import Header from "./components/header";
 import Profile from "./sections/profile";
 import Projects from "./sections/projects";
+import Email from "./sections/email";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Profile />
         <About />
         <Projects />
+        <Email />
       </div>
     </main>
   );

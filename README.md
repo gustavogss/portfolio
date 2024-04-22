@@ -9,5 +9,6 @@
 - [React Type Animation](https://react-type-animation.netlify.app)
 - [Heroicons](https://github.com/tailwindlabs/heroicons)
 - [Framer Motion](https://www.framer.com/motion/introduction/)
+- [Resend](https://resend.com/docs/send-with-nextjs)
 
 ## Aplicação:

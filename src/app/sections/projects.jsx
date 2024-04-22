@@ -25,7 +25,7 @@ const data = [
   },
   {
     id: 3,
-    title: "E-commerce Application",
+    title: "",
     description: "Project 3 description",
     image: "/assets/projects/3.png",
     tag: ["All", "Web"],
@@ -82,7 +82,7 @@ export default function Projects() {
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
           onClick={handleTagChange}
-          name="Todos"
+          name="All"
           isSelected={tag === "All"}
         />
         <ProjectTag

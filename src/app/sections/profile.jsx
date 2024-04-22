@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 
 export default function ProfileSection() {
@@ -30,12 +31,24 @@ export default function ProfileSection() {
             design único.{" "}
           </p>
           <div className="">
-            <button className="px-6 py-3 w:full sm:w-fit rounded-full mr-4 bg-[#751996] hover:bg-[#B319DA] text-white">
-              Contrate-me
-            </button>
-            <button className="px-6 py-3 w:full sm:w-fit rounded-full bg-transparent  hover:bg-[#B319DA] hover:bg-[#B319DA] text-white hover:text-white border border-white hover:border-[#212121] mt-3">
-              Download CV
-            </button>
+            <Link
+              href={"https://wa.me/558398015475"}
+              alt="What's app"
+              target="_blank"
+            >
+              <button className="px-6 py-3 w:full sm:w-fit rounded-full mr-4 bg-[#751996] hover:bg-[#B319DA] text-white">
+                Contrate-me
+              </button>
+            </Link>
+            <Link
+              href={"https://gustavosouza.dev.br/curriculum-vitae.pdf"}
+              alt="Curriculum"
+              target="_blank"
+            >
+              <button className="px-6 py-3 w:full sm:w-fit rounded-full bg-transparent  hover:bg-[#B319DA] hover:bg-[#B319DA] text-white hover:text-white border border-white hover:border-[#212121] mt-3">
+                Download CV
+              </button>
+            </Link>
           </div>
         </div>
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
