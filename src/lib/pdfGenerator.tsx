@@ -1,7 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// @ts-ignore
-import html2pdf from 'html2pdf.js';
 
 function ResumeRenderer({ userProfile, resumeData }: { userProfile: any, resumeData: any }) {
   return (
@@ -137,6 +135,10 @@ function ResumeRenderer({ userProfile, resumeData }: { userProfile: any, resumeD
 }
 
 export async function generateResumePDF(userProfile: any, resumeData: any) {
+  // Dynamic import to reduce initial bundle size
+  // @ts-ignore
+  const html2pdf = (await import('html2pdf.js')).default;
+
   return new Promise<void>((resolve, reject) => {
     // Create a hidden container
     const container = document.createElement('div');
