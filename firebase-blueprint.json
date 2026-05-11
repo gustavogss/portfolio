@@ -1,0 +1,21 @@
+{
+  "entities": {
+    "UserUsage": {
+      "title": "User Usage",
+      "description": "Tracks the number of AI curriculum generations for a user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "generationsCount": { "type": "integer" },
+        "lastGenerationAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "generationsCount"]
+    }
+  },
+  "firestore": {
+    "/usage/{userId}": {
+      "schema": "UserUsage",
+      "description": "Usage limits data for each user"
+    }
+  }
+}

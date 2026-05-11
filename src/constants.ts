@@ -8,6 +8,7 @@ import {
   ShieldCheck, 
   Smartphone, 
   Cloud,
+  Terminal,
   Github,
   Linkedin,
   Mail,
@@ -100,7 +101,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
   {
     title: 'IA & Automação',
     icon: Layers,
-    items: ['LLMs', 'Langchain', 'N8N', 'RAG', 'Claude', 'Ollama']
+    items: ['LLMs', 'Langchain', 'N8N', 'RAG', 'MCP', 'Claude', 'Ollama']
   },
   {
     title: 'Mobile & Frontend',
@@ -110,7 +111,12 @@ export const TECH_CATEGORIES: TechCategory[] = [
   {
     title: 'Backend',
     icon: Code2,
-    items: ['Node.js', 'Fastify', 'Python', 'TypeScript', 'PostgreSQL', 'Prisma']
+    items: ['Node.js', 'Fastify', 'Firebase', 'TypeScript', 'PostgreSQL', 'Prisma']
+  },
+  {
+    title: 'Metodologias',
+    icon: Terminal,
+    items: ['UML', 'Scrum', 'XP', 'Kanban', 'Git Flow', 'Clean Code']
   },
   {
     title: 'DevSecOps',

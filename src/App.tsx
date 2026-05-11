@@ -23,10 +23,14 @@ import {
   Award,
   Download,
   Loader2,
-  Cpu
+  Cpu,
+  LogIn,
+  LogOut
 } from 'lucide-react';
 import { generateResumeContent } from './services/geminiService';
 import { generateResumePDF } from './lib/pdfGenerator';
+import { auth, googleProvider, checkGenerationLimit, incrementGenerationCount } from './lib/firebase';
+import { signInWithPopup, signOut, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { 
   PROJECTS, 
   TECH_CATEGORIES, 
@@ -50,6 +54,30 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [activePostId, setActivePostId] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.error("Erro no login:", error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Erro no logout:", error);
+    }
+  };
 
   useEffect(() => {
     const titles: Record<Section, string> = {
@@ -63,8 +91,8 @@ export default function App() {
     };
 
     const descriptions: Record<Section, string> = {
-      home: 'Conheça Gustavo Souza, Desenvolvedor Full Stack, Mobile e especialista em DevSecOps. Foco em IA e Segurança.',
-      experience: 'Histórico profissional de Gustavo Souza em desenvolvimento mobile, web e segurança cibernética.',
+      home: 'Gustavo Souza, Desenvolvedor Full Stack, Mobile e especialista em DevSecOps. Foco em IA e Segurança.',
+      experience: 'Histórico profissional de Gustavo Souza em desenvolvimento web, mobile, devsecops, automação e ia integrada.',
       projects: 'Galeria de projetos desenvolvidos por Gustavo Souza, incluindo Agentes de IA, Mobile e Fullstack.',
       tech: 'Stack tecnológica e competências de Gustavo Souza em React, Flutter, Python e Segurança.',
       education: 'Trajetória educacional e formação acadêmica de Gustavo Souza.',
@@ -134,6 +162,23 @@ export default function App() {
           {/* Sidebar Footer */}
           {isSidebarOpen && (
             <div className="mt-auto mb-6 px-2 space-y-4 border-t border-white/5 pt-6" id="sidebar-footer">
+              {user ? (
+                <div className="flex items-center gap-3 p-2 bg-white/5 rounded-xl border border-white/10 group mb-4">
+                  <img src={user.photoURL || ''} alt={user.displayName || ''} className="w-8 h-8 rounded-full" />
+                  <div className="flex-grow min-w-0">
+                    <p className="text-xs font-bold text-white truncate">{user.displayName}</p>
+                    <button onClick={handleLogout} className="text-[10px] text-brand-primary font-bold hover:underline">Sair</button>
+                  </div>
+                </div>
+              ) : (
+                <button 
+                  onClick={handleLogin}
+                  className="flex items-center gap-2 px-4 py-2 bg-brand-primary/10 text-brand-primary text-xs font-bold rounded-xl border border-brand-primary/20 hover:bg-brand-primary/20 transition-all w-full mb-4"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Entrar com Google</span>
+                </button>
+              )}
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Contato</span>
                 <a href="mailto:contato@gustavosouza.dev.br" className="text-sm text-slate-300 hover:text-brand-primary transition-colors truncate">
@@ -194,7 +239,7 @@ export default function App() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              {activeSection === 'home' && <HomeSection />}
+              {activeSection === 'home' && <HomeSection user={user} onLogin={handleLogin} />}
               {activeSection === 'projects' && <ProjectsSection />}
               {activeSection === 'tech' && <TechSection />}
               {activeSection === 'experience' && <ExperienceSection />}
@@ -250,33 +295,57 @@ const NavItemMobile: React.FC<{ icon: any, active: boolean, onClick: () => void 
   );
 }
 
-function HomeSection() {
+function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLogin: () => void }) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [usageCount, setUsageCount] = useState(0);
+  const [remainingGenerations, setRemainingGenerations] = useState(5);
 
   useEffect(() => {
-    setUsageCount(parseInt(localStorage.getItem('ai_generation_count') || '0'));
-  }, []);
+    if (user) {
+      checkGenerationLimit(user.uid).then(res => {
+        setUsageCount(5 - res.remaining);
+        setRemainingGenerations(res.remaining);
+      });
+    } else {
+      setUsageCount(0);
+      setRemainingGenerations(5);
+    }
+  }, [user]);
 
   const handleGenerateResume = async () => {
-    if (usageCount >= 5) {
-      alert("Você atingiu o limite de 5 gerações por sessão.");
+    if (!user) {
+      onLogin();
       return;
     }
+
+    // Comentado temporariamente para testes a pedido do usuário
+    /*
+    const { allowed, remaining } = await checkGenerationLimit(user.uid);
+    if (!allowed) {
+      alert("Você atingiu o limite de 5 gerações. Para evitar abusos e custos excessivos, a geração foi limitada.");
+      return;
+    }
+    */
+
     setIsGenerating(true);
     try {
       const data = {
-        name: "Gustavo Souza",
         role: "Engenheiro de Software | Mobile | AppSec",
         experiences: EXPERIENCES,
         projects: PROJECTS,
         education: EDUCATION,
-        certifications: CERTIFICATIONS,
-        tech: TECH_CATEGORIES
+        techCategories: TECH_CATEGORIES
       };
       
       const aiContent = await generateResumeContent(data);
-      setUsageCount(prev => prev + 1);
+      
+      // Increment count in Firebase
+      await incrementGenerationCount(user!.uid).catch(console.error);
+      
+      // Update local state
+      const { remaining } = await checkGenerationLimit(user!.uid);
+      setUsageCount(5 - remaining);
+      setRemainingGenerations(remaining);
       
       const userProfile = {
         name: "Gustavo Souza",
@@ -286,16 +355,16 @@ function HomeSection() {
         linkedin: GUSTAVO_LINKEDIN,
         education: EDUCATION,
         certifications: CERTIFICATIONS,
-        tech: TECH_CATEGORIES
+        techCategories: TECH_CATEGORIES
       };
 
       await generateResumePDF(userProfile, aiContent);
     } catch (error: any) {
       console.error("Erro ao gerar currículo:", error);
       if (error.message === 'LIMIT_EXCEEDED') {
-        alert("Você atingiu o limite de 5 gerações por sessão. Para evitar abusos e custos excessivos, a geração foi limitada.");
+        alert("Você atingiu o limite de gerações de teste. Aguarde a liberação ou entre em contato.");
       } else {
-        alert("Houve um erro ao gerar o currículo com IA. Tente novamente.");
+        alert("Houve um erro ao gerar o currículo com IA: " + (error.message || "Erro desconhecido"));
       }
     } finally {
       setIsGenerating(false);
@@ -323,12 +392,12 @@ function HomeSection() {
           <p className="text-slate-400 max-w-xl leading-relaxed">
             Desenvolvo soluções web e mobile com foco em resultados, segurança, ia integrada e automação.
           </p>
-          <div className="flex justify-center md:justify-start pt-2">
+          <div className="flex justify-center md:justify-start pt-2 flex-col gap-2 items-center md:items-start">
             <button 
               id="generate-cv"
               onClick={handleGenerateResume}
-              disabled={isGenerating || usageCount >= 5}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-white font-bold hover:scale-105 transition-all shadow-lg shadow-brand-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
+              disabled={isGenerating || (user && remainingGenerations <= 0)}
+              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-white font-bold hover:scale-105 transition-all shadow-lg shadow-brand-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 w-fit"
             >
               {isGenerating ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -337,6 +406,11 @@ function HomeSection() {
               )}
               <span>{isGenerating ? 'IA Gerando...' : 'Gerar Currículo (IA)'}</span>
             </button>
+            {user && (
+              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest pl-1">
+                Restante: {remainingGenerations} / 5 gerações
+              </span>
+            )}
           </div>
         </div>
       </section>
@@ -705,15 +779,10 @@ function CertificationsSection() {
                 <h3 className="text-lg font-bold text-white group-hover:text-brand-primary transition-colors">{cert.name}</h3>
                 <p className="text-slate-400 text-sm">{cert.issuer}</p>
               </div>
-              <div className="flex flex-col items-center md:items-end gap-2">
+              <div className="flex flex-col items-center md:items-end justify-center">
                 <span className="px-3 py-1 bg-slate-800 text-slate-300 text-xs font-bold rounded-full border border-slate-700 whitespace-nowrap">
                   {cert.date}
                 </span>
-                {cert.link && (
-                  <a href={cert.link} className="text-brand-primary text-xs font-bold hover:underline flex items-center gap-1">
-                    Ver credencial <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
               </div>
             </div>
           </motion.div>

@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net: Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helper Primitives ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+
+    // --- Entity Validation Helpers ---
+    function isValidUsage(data) {
+      return data.keys().hasAll(['userId', 'generationsCount']) &&
+             data.keys().size() >= 2 &&
+             data.userId == request.auth.uid &&
+             data.generationsCount is int &&
+             data.generationsCount >= 0;
+    }
+
+    // --- Collection Routes ---
+    match /usage/{userId} {
+      allow get: if isOwner(userId) && isValidId(userId);
+      
+      // Allow create if they are initializing their usage record
+      allow create: if isOwner(userId) && 
+                       isValidUsage(incoming()) && 
+                       incoming().generationsCount == 1; // Start with 1 if they just used it
+      
+      // Allow update if they are incrementing their usage
+      allow update: if isOwner(userId) && 
+                       isValidUsage(incoming()) &&
+                       incoming().userId == existing().userId &&
+                       (
+                         // Action: Increment usage
+                         incoming().diff(existing()).affectedKeys().hasOnly(['generationsCount', 'lastGenerationAt'])
+                       );
+    }
+  }
+}

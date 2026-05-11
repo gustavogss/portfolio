@@ -1,6 +1,6 @@
 # Gustavo Souza | Portfolio & Blog
 
-![Gustavo Souza Banner](https://gustavosouza.dev.br/images/og-banner.png)
+![Gustavo Souza Banner](https://gustavosouza.dev/images/og-banner.png)
 
 Este é o repositório do portfólio profissional de **Gustavo Souza**, Engenheiro de Software especializado em Mobile e DevSecOps. O projeto foi construído para ser uma central de informações sobre sua carreira, projetos técnicos, habilidades e insights de tecnologia.
 
