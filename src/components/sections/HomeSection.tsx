@@ -10,7 +10,7 @@ import { motion } from 'motion/react';
 import { User as FirebaseUser } from 'firebase/auth';
 import { checkGenerationLimit, incrementGenerationCount } from '../../lib/firebase';
 import { generateResumeContent } from '../../services/geminiService';
-import { generateResumePDF } from '../../lib/pdfGenerator';
+// Removed static import of generateResumePDF
 import { 
   PROJECTS, 
   TECH_CATEGORIES, 
@@ -70,6 +70,7 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
         techCategories: TECH_CATEGORIES
       };
 
+      const { generateResumePDF } = await import('../../lib/pdfGenerator');
       await generateResumePDF(userProfile, aiContent);
     } catch (error: any) {
       console.error("Erro ao gerar currículo:", error);
