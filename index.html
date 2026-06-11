@@ -4,10 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts -->
+  <!-- Fonts (Optimized for Performance) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap">
+  </noscript>
 
   <!-- Primary Meta Tags -->
   <title>Gustavo Souza | Software Engineer & DevSecOps</title>
@@ -19,12 +23,13 @@
   <meta name="author" content="Gustavo Souza" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://gustavosouza.dev/" />
   <meta property="og:title" content="Gustavo Souza | Software Engineer & DevSecOps" />
-  <meta property="og:description"
-    content="Dashboard de portfólio profissional focado em desenvolvimento, segurança e IA aplicada." />
+  <meta property="og:description" content="Dashboard de portfólio profissional focado em desenvolvimento, segurança e IA aplicada." />
   <meta property="og:image" content="https://gustavosouza.dev/images/og-banner.png" />
+  <meta property="og:site_name" content="Gustavo Souza Portfolio" />
+  <meta property="og:locale" content="pt_BR" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -35,24 +40,52 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/src/assets/logo.png" />
 
   <link rel="canonical" href="https://gustavosouza.dev/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
+    [
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Gustavo Souza",
+        "@type": "WebSite",
+        "name": "Gustavo Souza | Software Engineer",
         "url": "https://gustavosouza.dev/",
-        "jobTitle": "Software Engineer",
-        "sameAs": [
-          "https://github.com/gustavogss",
-          "https://www.linkedin.com/in/gustavosouza-jp/"
-        ],
-        "description": "Engenheiro de Software | Mobile | DevSecOps focado em IA integrada e automação."
+        "description": "Portfólio de Gustavo Souza, Engenheiro de Software com foco em IA, Mobile e DevSecOps.",
+        "inLanguage": "pt-BR"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "dateCreated": "2026-01-01T00:00:00-03:00",
+        "dateModified": "2026-06-11T00:00:00-03:00",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Gustavo Souza",
+          "url": "https://gustavosouza.dev/",
+          "image": "https://github.com/gustavogss.png",
+          "jobTitle": "Software Engineer & DevSecOps",
+          "description": "Engenheiro de Software | Mobile | DevSecOps focado em IA integrada e automação.",
+          "sameAs": [
+            "https://github.com/gustavogss",
+            "https://www.linkedin.com/in/gustavosouza-jp/"
+          ],
+          "knowsAbout": [
+            "Desenvolvimento Web",
+            "Mobile Development",
+            "React Native",
+            "Flutter",
+            "DevSecOps",
+            "Segurança da Informação",
+            "Inteligência Artificial",
+            "Node.js"
+          ]
+        }
       }
-    </script>
+    ]
+  </script>
 </head>
 
 <body>

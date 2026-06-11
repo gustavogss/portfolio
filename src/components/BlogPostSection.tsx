@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ChevronLeft, Share2 } from 'lucide-react';
+import { X, Share2 } from 'lucide-react';
 import { BLOG_POSTS } from '../constants';
 
 interface BlogPostSectionProps {
@@ -50,96 +50,107 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
   const shareLinks = {
     whatsapp: `https://wa.me/?text=${encodeURIComponent(`${post.title} - ${currentUrl}`)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`
+    telegram: `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(post.title)}`
   };
 
   return (
-    <motion.article 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="max-w-4xl mx-auto pb-12 px-4 sm:px-6 md:px-8 w-full overflow-hidden break-words"
-    >
-      <button 
-        onClick={onBack}
-        className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+      <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={onBack}></div>
+      
+      <motion.article 
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        className="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] z-10 border border-slate-800"
       >
-        <ChevronLeft className="w-4 h-4" />
-        <span>Voltar para o blog</span>
-      </button>
+        <button 
+          onClick={onBack}
+          className="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-brand-primary rounded-full text-white transition-colors"
+        >
+          <X className="w-6 h-6" />
+        </button>
 
-      <div className="rounded-3xl overflow-hidden mb-12 relative h-[300px] md:h-[400px]">
-        <div className="absolute inset-0 bg-black/50 z-10" />
-        <img 
-          src={post.imageUrl} 
-          alt={post.title} 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-brand-primary text-white text-xs font-bold uppercase rounded-lg">
-              {post.category}
-            </span>
-            <span className="text-slate-300 text-sm font-medium">
-              {post.date}
-            </span>
+        <div className="overflow-y-auto overflow-x-hidden flex-1">
+          <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-full shrink-0">
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/40 to-transparent z-10" />
+            <img 
+              src={post.imageUrl} 
+              alt={post.title} 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 left-0 p-6 md:p-8 z-20 w-full">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="px-3 py-1 bg-brand-primary text-white text-xs font-bold uppercase rounded-lg">
+                  {post.category}
+                </span>
+                <span className="text-slate-300 text-sm font-medium">
+                  {post.date}
+                </span>
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-display mb-2">
+                {post.title}
+              </h1>
+            </div>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-display mb-4">
-            {post.title}
-          </h1>
-        </div>
-      </div>
 
-      {post.id === 'm1' ? (
-        <BlogContentMagento />
-      ) : post.id === 'm2' ? (
-        <BlogContentIos />
-      ) : post.id === 'ai1' ? (
-        <BlogContentVibecoding />
-      ) : post.id === 'vibe-agents' ? (
-        <BlogContentVibeAgents />
-      ) : post.id === '2' ? (
-        <BlogContentSecurity />
-      ) : (
-        <div className="prose prose-invert prose-brand max-w-none prose-lg">
-          <p className="text-xl text-slate-300 leading-relaxed">
-            {post.summary}
-          </p>
-          <div className="mt-8 p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
-            <p className="text-slate-400 text-center">Conteúdo completo em breve.</p>
+          <div className="p-6 md:p-8">
+            {post.id === 'm1' ? (
+              <BlogContentMagento />
+            ) : post.id === 'm2' ? (
+              <BlogContentIos />
+            ) : post.id === 'ai1' ? (
+              <BlogContentVibecoding />
+            ) : post.id === 'vibe-agents' ? (
+              <BlogContentVibeAgents />
+            ) : post.id === '2' ? (
+              <BlogContentSecurity />
+            ) : (
+              <div className="prose prose-invert prose-brand max-w-none prose-lg text-slate-300">
+                <p className="text-xl leading-relaxed mb-6 font-medium text-white">
+                  {post.summary}
+                </p>
+                <p className="leading-relaxed mb-6">
+                  Aprofundar-se neste tema é essencial para compreendermos as constantes evoluções tecnológicas e as demandas atuais do mercado de desenvolvimento e segurança da informação. Ao explorarmos as nuances desta categoria técnica, percebemos que a adoção de boas práticas e a implementação de processos otimizados não são apenas diferenciais competitivos, mas requisitos fundamentais para o sucesso de qualquer projeto de software moderno.
+                </p>
+                <p className="leading-relaxed mb-6">
+                  Além dos desafios técnicos envolvidos na implementação dessa tecnologia, é importante destacar o papel da comunidade e do aprendizado contínuo. Ferramentas, frameworks e metodologias ágeis estão em constante transformação. Portanto, manter-se atualizado e compartilhar conhecimento através de artigos, contribuições open-source e discussões arquiteturais é a melhor estratégia para superarmos os obstáculos do dia a dia e construirmos soluções mais robustas, seguras e de alta performance.
+                </p>
+              </div>
+            )}
+
+            <div className="mt-16 pt-8 border-t border-slate-800">
+              <h3 className="text-white font-bold text-xl mb-6 text-center">E aí, gostou? Então compartilhe</h3>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                <a 
+                  href={shareLinks.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white rounded-xl transition-all font-bold"
+                >
+                  WhatsApp
+                </a>
+                <a 
+                  href={shareLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white rounded-xl transition-all font-bold"
+                >
+                  LinkedIn
+                </a>
+                <a 
+                  href={shareLinks.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#0088cc]/10 text-[#0088cc] hover:bg-[#0088cc] hover:text-white rounded-xl transition-all font-bold"
+                >
+                  Telegram
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      )}
-
-      <div className="mt-16 pt-8 border-t border-slate-800">
-        <h3 className="text-white font-bold text-xl mb-6 text-center">E aí, gostou do conteúdo? Compartilhe 👇</h3>
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-          <a 
-            href={shareLinks.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white rounded-xl transition-all font-bold"
-          >
-            WhatsApp
-          </a>
-          <a 
-            href={shareLinks.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white rounded-xl transition-all font-bold"
-          >
-            LinkedIn
-          </a>
-          <a 
-            href={shareLinks.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white rounded-xl transition-all font-bold"
-          >
-            Facebook
-          </a>
-        </div>
-      </div>
-    </motion.article>
+      </motion.article>
+    </div>
   );
 }
 
@@ -391,17 +402,6 @@ function BlogContentVibeAgents() {
         Muitos desenvolvedores cometem o erro de tratar a IA como uma "caixa preta" que entrega soluções prontas, resultando em códigos sem estrutura, alucinações arquiteturais e dependências infladas. A forma mais recomendada de escalar essa produtividade é através do uso de <strong>Agentes Especialistas</strong>.
       </p>
 
-      <div className="my-8 rounded-xl overflow-hidden border border-slate-700/50">
-        <img 
-          src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80" 
-          alt="Ecossistema de Agentes de IA" 
-          className="w-full object-cover max-h-80"
-        />
-        <div className="p-4 bg-slate-800/30 text-sm text-center text-slate-400">
-          Orquestração: O poder de múltiplos agentes especializados colaborando em um ambiente distribuído.
-        </div>
-      </div>
-
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-white/10 pb-4">Os Erros Comuns do Vibecoding "Solitário"</h2>
       <ul className="space-y-4 mb-8">
         <li className="flex flex-col">
@@ -479,17 +479,6 @@ function BlogContentVibecoding() {
       <p className="mb-8">
         No entanto, códigos gerados por IA ainda podem introduzir vulnerabilidades de segurança, problemas estruturais de performance e dependências comprometidas sem que a gente perceba — caso não haja revisão atenta. É por isso que o <strong>Vibecoding só é seguro e sustentável com monitoramento e CI/CD estritos</strong>.
       </p>
-
-      <div className="my-8 rounded-xl overflow-hidden border border-slate-700/50">
-        <img 
-          src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1200&q=80" 
-          alt="GitHub Actions CI/CD Pipeline Flow" 
-          className="w-full object-cover max-h-80"
-        />
-        <div className="p-4 bg-slate-800/30 text-sm text-center text-slate-400">
-          A importância de múltiplos jobs: validação de segurança e qualidade contínuas a cada commit gerado.
-        </div>
-      </div>
 
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-white/10 pb-4">A Importância da Esteira de CI/CD</h2>
       <p className="mb-4">Para se beneficiar do Vibecoding e ao mesmo tempo blindar sua aplicação, ter uma pipeline eficiente é fundamental:</p>

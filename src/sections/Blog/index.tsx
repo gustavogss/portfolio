@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { BLOG_POSTS } from "@/constants";
 import { BlogPostSection } from "@/components/BlogPostSection";
 
@@ -11,15 +11,6 @@ export default function BlogSection({
   setActivePostId: (id: string | null) => void;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  
-  if (activePostId) {
-    return (
-      <BlogPostSection
-        postId={activePostId}
-        onBack={() => setActivePostId(null)}
-      />
-    );
-  }
 
   const categoriesRaw = Array.from(
     new Set(BLOG_POSTS.map((post) => post.category)),
@@ -82,6 +73,15 @@ export default function BlogSection({
           <BlogCard key={post.id} post={post} onReadPost={setActivePostId} />
         ))}
       </div>
+
+      <AnimatePresence>
+        {activePostId && (
+          <BlogPostSection
+            postId={activePostId}
+            onBack={() => setActivePostId(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -102,6 +102,7 @@ const BlogCard: React.FC<{ post: any; onReadPost: (id: string) => void }> = ({
           <img
             src={post.imageUrl}
             alt={post.title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute top-4 left-4">

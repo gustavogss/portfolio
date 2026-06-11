@@ -80,6 +80,7 @@ export default function HomeSection() {
             alt="Gustavo Souza"
             className="relative w-40 h-40 rounded-full object-cover border-4 border-slate-900 shadow-2xl"
             id="profile-image"
+            fetchPriority="high"
           />
         </div>
         <div className="text-center md:text-left space-y-4">
