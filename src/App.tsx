@@ -1,8 +1,9 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import React, { Suspense } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import MainLayout from "@/layouts/MainLayout";
+import { useNavigation } from "@/hooks/useNavigation";
 
+<<<<<<< HEAD
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -109,6 +110,18 @@ export default function App() {
     { id: 'certifications', icon: Award, label: 'Certificações' },
     { id: 'blog', icon: Newspaper, label: 'Blog' },
   ];
+=======
+const HomeSection = React.lazy(() => import("@/sections/Home"));
+const ProjectsSection = React.lazy(() => import("@/sections/Projects"));
+const TechSection = React.lazy(() => import("@/sections/Tech"));
+const ExperienceSection = React.lazy(() => import("@/sections/Experience"));
+const EducationSection = React.lazy(() => import("@/sections/Education"));
+const CertificationsSection = React.lazy(() => import("@/sections/Certifications"));
+const BlogSection = React.lazy(() => import("@/sections/Blog"));
+
+export default function App() {
+  const { activeSection, setActiveSection, activePostId, setActivePostId } = useNavigation();
+>>>>>>> 84d975c (feat: arquiteture)
 
   const LoadingIndicator = () => (
     <div className="flex items-center justify-center p-20">
@@ -117,6 +130,7 @@ export default function App() {
   );
 
   return (
+<<<<<<< HEAD
     <div className="flex min-h-screen bg-[#030712] pb-16 md:pb-0" id="dashboard-root">
       {/* Mobile Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full h-16 bg-[#212121] backdrop-blur-xl border-t border-white/5 z-50 flex items-center justify-around px-2">
@@ -301,3 +315,37 @@ const NavItemMobile: React.FC<{ icon: any, active: boolean, onClick: () => void 
 }
 
 
+=======
+    <MainLayout activeSection={activeSection} setActiveSection={setActiveSection}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Suspense fallback={
+            <div className="flex justify-center items-center p-20 min-h-[50vh]">
+              <div className="w-10 h-10 border-4 border-brand-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          }>
+            {activeSection === "home" && <HomeSection />}
+            {activeSection === "projects" && <ProjectsSection />}
+            {activeSection === "tech" && <TechSection />}
+            {activeSection === "experience" && <ExperienceSection />}
+            {activeSection === "education" && <EducationSection />}
+            {activeSection === "certifications" && <CertificationsSection />}
+            {activeSection === "blog" && (
+              <BlogSection 
+                activePostId={activePostId} 
+                setActivePostId={setActivePostId} 
+              />
+            )}
+          </Suspense>
+        </motion.div>
+      </AnimatePresence>
+    </MainLayout>
+  );
+}
+>>>>>>> 84d975c (feat: arquiteture)

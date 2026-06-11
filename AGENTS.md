@@ -4,7 +4,7 @@ Este arquivo é automaticamente carregado pelo **AI Studio** e serve como o prin
 
 ## Identidade do Projeto
 - **Dono:** Gustavo Souza (@gustavogss)
-- **Role:** Engenheiro de Software | Mobile | AppSec
+- **Role:** Engenheiro de Software | Mobile | DevSecOps
 - **Foco Técnico:** DevSecOps (SAST, DAST, OWASP), Mobile (Flutter, React Native), IA (LLMs, Langchain, RAG, N8N, Ollama) e Frontend (React, Tailwind).
 
 ## Personas Especialistas (Agentes)
@@ -18,7 +18,11 @@ Para evitar perda de contexto durante a iteração, adote a postura do agente qu
 1. **Nunca use dados mockados:** Só adicione projetos que o Gustavo realmente construiu (exija os links dele ou pegue da base atual).
 2. O sistema primariamente fala **Português (PT-BR)** no conteúdo voltado ao usuário final.
 3. Este é um portfólio de alta performance: código limpo, Vite veloz, animações sutis e interface de impacto formam a espinha dorsal.
+<<<<<<< HEAD
 4. **Padrão de Currículo (ATS/Gupy):** A geração de currículos deve seguir padrões compatíveis com sistemas ATS. Textos devem ser alinhados, sem cortes entre páginas. Se um item não couber, ele deve saltar para a próxima página mantendo o alinhamento de colunas.
 5. **Datas e Status:** Itens de Formação ou Certificações datados do ano corrente (2026) ou como "Presente" devem obrigatoriamente incluir a observação "(Em formação)" ou "(Especializando-se)".
 6. **Tecnologias:** Nomes de tecnologias devem estar completos e legíveis, sem truncamento.
 7. **Segurança de Segredos:** É terminantemente proibido expor credenciais, chaves de API ou segredos (como Firebase Config) diretamente no código frontend. Use sempre variáveis de ambiente.
+=======
+4. **Nunca invente informações:** A IA e os agentes devem usar **exclusivamente** os dados que existem no site (`constants.ts`). Pode otimizar, reformular e enriquecer os textos, mas **nunca adicionar informações que não estejam na base de dados real** (exemplo: não inventar metodologias, ferramentas, habilidades ou detalhes que não constem nos dados do portfólio).
+>>>>>>> 84d975c (feat: arquiteture)

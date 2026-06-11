@@ -7,6 +7,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
+<<<<<<< HEAD
     plugins: [
       react(),
       tailwindcss(),
@@ -20,6 +21,9 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+=======
+    plugins: [react(), tailwindcss()],
+>>>>>>> 84d975c (feat: arquiteture)
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
