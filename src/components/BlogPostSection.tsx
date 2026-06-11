@@ -84,7 +84,7 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
                 <span className="px-3 py-1 bg-brand-primary text-white text-xs font-bold uppercase rounded-lg">
                   {post.category}
                 </span>
-                <span className="text-text-main text-sm font-medium">
+                <span className="text-white text-sm font-medium">
                   {post.date}
                 </span>
               </div>
@@ -106,7 +106,7 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
             ) : post.id === '2' ? (
               <BlogContentSecurity />
             ) : (
-              <div className="prose prose-invert prose-brand max-w-none prose-lg text-text-main">
+              <div className="prose prose-invert prose-brand max-w-none prose-lg text-white">
                 <p className="text-xl leading-relaxed mb-6 font-medium text-white">
                   {post.summary}
                 </p>
@@ -157,20 +157,20 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
 
 function BlogContentMagento() {
   return (
-    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-text-main">
-      <p className="text-xl text-text-main leading-relaxed mb-8">
+    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-white">
+      <p className="text-xl text-white leading-relaxed mb-8">
         Se você já tentou estudar Magento 2, sabe que o maior desafio não é o código — é a infraestrutura.
       </p>
 
-      <p className="mb-8">
+      <p className="mb-8 text-white">
         Magento exige uma stack robusta: PHP, MySQL, Elasticsearch, Redis, Nginx… e tudo isso com bastante memória. Não é à toa que hospedagens compartilhadas não são recomendadas para esse tipo de aplicação.
       </p>
 
-      <p className="mb-12">
+      <p className="mb-12 text-white">
         Pensando nisso, criei uma solução simples para quem quer estudar Magento 2 sem gastar com servidores.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A solução</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">A solução</h2>
       <p className="mb-8">
         Você pode encontrar o projeto completo e as instruções detalhadas no repositório abaixo:
       </p>
@@ -183,7 +183,7 @@ function BlogContentMagento() {
         Projeto Magento2-Docker no GitHub
       </a>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">O que essa solução resolve</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">O que essa solução resolve</h2>
       <ul className="space-y-3 mb-12 list-disc pl-6">
         <li><strong>Evita custos</strong> com VPS ou cloud</li>
         <li><strong>Elimina problemas</strong> de configuração manual</li>
@@ -191,7 +191,7 @@ function BlogContentMagento() {
         <li>Permite <strong>estudar Magento</strong> de forma prática e rápida</li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">O que tem por trás</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">O que tem por trás</h2>
       <div className="flex flex-wrap gap-3 mb-12">
         {['PHP', 'MySQL', 'Nginx', 'Redis', 'Elasticsearch'].map((tech) => (
           <span key={tech} className="px-4 py-2 bg-[#212121] border border-border-color rounded-lg text-[#cccccc] font-medium">
@@ -200,23 +200,23 @@ function BlogContentMagento() {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Por que usar Docker?</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Por que usar Docker?</h2>
       <ul className="space-y-4 mb-12">
         <li className="flex flex-col">
-          <strong className="text-text-main">Isolamento</strong>
-          <span className="text-text-muted text-base">Não polui sua máquina com dezenas de dependências que podem quebrar.</span>
+          <strong className="text-white">Isolamento</strong>
+          <span className="text-white text-base">Não polui sua máquina com dezenas de dependências que podem quebrar.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Reprodutibilidade</strong>
-          <span className="text-text-muted text-base">Funciona na minha máquina, e vai funcionar na sua também, graças aos containers.</span>
+          <strong className="text-white">Reprodutibilidade</strong>
+          <span className="text-white text-base">Funciona na minha máquina, e vai funcionar na sua também, graças aos containers.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Facilidade de setup</strong>
-          <span className="text-text-muted text-base">Com poucos comandos (como docker-compose up) você levanta toda a infraestrutura complexa necessária.</span>
+          <strong className="text-white">Facilidade de setup</strong>
+          <span className="text-white text-base">Com poucos comandos (como docker-compose up) você levanta toda a infraestrutura complexa necessária.</span>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Para quem é?</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Para quem é?</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
         <div className="p-4 bg-bg-card/30 rounded-xl border border-border-color/50 flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-brand-primary" /> Iniciantes
@@ -232,7 +232,7 @@ function BlogContentMagento() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Como começar</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Como começar</h2>
       <ol className="list-decimal pl-6 space-y-4 mb-12 marker:text-brand-primary marker:font-bold">
         <li className="pl-2">Clone o repositório</li>
         <li className="pl-2">Suba os containers (<code>docker-compose up -d</code>)</li>
@@ -240,8 +240,8 @@ function BlogContentMagento() {
         <li className="pl-2">Comece a estudar!</li>
       </ol>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
-      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-text-main">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
+      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-white">
         Magento é complexo, mas com Docker fica acessível e gratuito. Aproveite!
       </p>
 
@@ -258,46 +258,46 @@ function BlogContentMagento() {
 
 function BlogContentSecurity() {
   return (
-    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-text-main">
-      <p className="text-xl text-text-main leading-relaxed mb-8">
+    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-white">
+      <p className="text-xl text-white leading-relaxed mb-8">
         Quando falamos sobre desenvolvimento de software, a segurança muitas vezes é deixada para a reta final do projeto. O resultado? Deploys que se tornam verdadeiros pesadelos e vulnerabilidades críticas em produção. 
       </p>
 
-      <p className="mb-8">
+      <p className="mb-8 text-white">
         Adotar uma cultura <strong>DevSecOps</strong> significa mudar essa mentalidade. É trazer a segurança para a esquerda (<em>Shift Left</em>), integrando-a desde a fase de planejamento até a entrega e o monitoramento contínuo.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A Importância da Cultura DevSecOps</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">A Importância da Cultura DevSecOps</h2>
+      <p className="mb-8 text-white">
         Não se trata apenas de ferramentas, mas de <strong>cultura</strong>. Desenvolvedores, operações e segurança precisam trabalhar com o mesmo propósito. Quando a segurança faz parte do fluxo de trabalho diário de forma automatizada, garantimos mais agilidade e tranquilidade nas entregas.
       </p>
       
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Pipeline de Segurança</h2>
-      <p className="mb-4">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Pipeline de Segurança</h2>
+      <p className="mb-4 text-white">
         Uma esteira automatizada (CI/CD) forte é o coração do DevSecOps. Nela podemos acoplar diversas verificações:
       </p>
       <ul className="space-y-4 mb-12">
         <li className="flex flex-col">
-          <strong className="text-text-main">SAST (Static Application Security Testing)</strong>
-          <span className="text-text-muted text-base">Análise estática de código para encontrar falhas de segurança como SQL Injection e XSS antes mesmo da aplicação rodar.</span>
+          <strong className="text-white">SAST (Static Application Security Testing)</strong>
+          <span className="text-white text-base">Análise estática de código para encontrar falhas de segurança como SQL Injection e XSS antes mesmo da aplicação rodar.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">SCA (Software Composition Analysis)</strong>
-          <span className="text-text-muted text-base">Verifica se as bibliotecas e dependências de terceiros possuem vulnerabilidades conhecidas (CVEs).</span>
+          <strong className="text-white">SCA (Software Composition Analysis)</strong>
+          <span className="text-white text-base">Verifica se as bibliotecas e dependências de terceiros possuem vulnerabilidades conhecidas (CVEs).</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">DAST (Dynamic Application Security Testing)</strong>
-          <span className="text-text-muted text-base">Testes dinâmicos que simulam ataques automatizados na aplicação já em execução (no ambiente de staging, por exemplo).</span>
+          <strong className="text-white">DAST (Dynamic Application Security Testing)</strong>
+          <span className="text-white text-base">Testes dinâmicos que simulam ataques automatizados na aplicação já em execução (no ambiente de staging, por exemplo).</span>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Monitoramento Contínuo</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Monitoramento Contínuo</h2>
+      <p className="mb-8 text-white">
         Deploy feito não significa trabalho finalizado. O monitoramento contínuo é o que permite identificar e responder a incidentes e novas ameaças de prontidão. Alertas configurados e rastreamento de logs e métricas mantêm a aplicação segura.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Projeto Prático</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Projeto Prático</h2>
+      <p className="mb-8 text-white">
         A teoria é ótima, mas como é na prática? Construí um projeto focado nesses conceitos para exemplificar como incorporar segurança diretamente no código e na automação.
       </p>
       
@@ -310,8 +310,8 @@ function BlogContentSecurity() {
         Projeto Task Manager no GitHub
       </a>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
-      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-text-main">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
+      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-white">
         Investir na cultura e nas ferramentas de DevSecOps significa não apenas proteger seus usuários e dados, mas garantir previsibilidade e sucesso em cada deploy. O momento de aplicar essas práticas em seus projetos é agora.
       </p>
 
@@ -328,42 +328,42 @@ function BlogContentSecurity() {
 
 function BlogContentIos() {
   return (
-    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-text-main">
-      <p className="text-xl text-text-main leading-relaxed mb-8">
+    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-white">
+      <p className="text-xl text-white leading-relaxed mb-8">
         Se você já desenvolveu aplicativos multiplataforma usando React Native, Flutter ou Ionic, provavelmente já se deparou com um grande obstáculo: <strong>como testar o aplicativo no iOS sem ter um Mac?</strong>
       </p>
 
-      <p className="mb-8">
+      <p className="mb-8 text-white">
         O ecossistema da Apple é notório por ser fechado. Para compilar e rodar um app iOS, você obrigatoriamente precisa do Xcode, que só funciona no macOS. Isso cria uma barreira de entrada gigante, especialmente em países onde os equipamentos da maçã têm valores exorbitantes.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">O Preço do Desenvolvimento iOS</h2>
-      <p className="mb-4">As alternativas tradicionais costumam pesar no bolso:</p>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">O Preço do Desenvolvimento iOS</h2>
+      <p className="mb-4 text-white">As alternativas tradicionais costumam pesar no bolso:</p>
       <ul className="space-y-4 mb-12">
         <li className="flex flex-col">
-          <strong className="text-text-main">Comprar um Mac</strong>
-          <span className="text-text-muted text-base">A opção mais "simples", porém exige um investimento de milhares de reais (ou dólares), o que nem sempre é viável para desenvolvedores independentes ou iniciantes.</span>
+          <strong className="text-white">Comprar um Mac</strong>
+          <span className="text-white text-base">A opção mais "simples", porém exige um investimento de milhares de reais (ou dólares), o que nem sempre é viável para desenvolvedores independentes ou iniciantes.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Serviços em Nuvem (MacinCloud, AWS Mac, etc)</strong>
-          <span className="text-text-muted text-base">Outra alternativa é alugar um Mac remoto. Mas isso tem um custo recorrente mensal ou por hora que pode se acumular rapidamente e comprometer o orçamento do projeto.</span>
+          <strong className="text-white">Serviços em Nuvem (MacinCloud, AWS Mac, etc)</strong>
+          <span className="text-white text-base">Outra alternativa é alugar um Mac remoto. Mas isso tem um custo recorrente mensal ou por hora que pode se acumular rapidamente e comprometer o orçamento do projeto.</span>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A Solução: macOS no Docker</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">A Solução: macOS no Docker</h2>
+      <p className="mb-8 text-white">
         Felizmente, existe uma alternativa engenhosa e sem custos adicionais: rodar o sistema da Apple dentro do Docker. Essa abordagem usa virtualização KVM junto com o Docker para subir o macOS em qualquer computador Windows (via WSL) ou Linux que tenha os recursos mínimos necessários.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Vantagens</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Vantagens</h2>
       <ul className="space-y-3 mb-12 list-disc pl-6">
         <li><strong>Gratuito:</strong> Você só precisa do hardware do seu PC atual.</li>
         <li><strong>Portátil:</strong> O Docker garante que o setup possa ser facilmente recriado ou transferido.</li>
         <li><strong>Simulador embutido:</strong> Dentro do macOS virtualizado você usa o próprio Xcode e o simulador do iPhone da mesma forma que usaria em um Mac físico.</li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">O Projeto Prático</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">O Projeto Prático</h2>
+      <p className="mb-8 text-white">
         Para facilitar e demonstrar todo esse processo de ponta a ponta, organizei um repositório que detalha como orquestrar a inicialização do macOS utilizando Docker e como acessar e testar seus aplicativos a partir da máquina host.
       </p>
       
@@ -376,8 +376,8 @@ function BlogContentIos() {
         Acessar Projeto no GitHub: gustavogss/mac-docker
       </a>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
-      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-text-main">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
+      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-white">
         Criar experiências mobile consistentes exige testes em dispositivos reais e simuladores de ambas as plataformas. Com a ajuda da virtualização e do Docker, o mundo do iOS agora está ao alcance de qualquer desenvolvedor, derrubando a barreira de custo e democratizando o acesso.
       </p>
 
@@ -394,54 +394,54 @@ function BlogContentIos() {
 
 function BlogContentVibeAgents() {
   return (
-    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-text-main">
-      <p className="text-xl text-text-main leading-relaxed mb-8">
+    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-white">
+      <p className="text-xl text-white leading-relaxed mb-8">
         O "Vibecoding" (programar no fluxo da conversa com IAs) é libertador, mas quando mal executado, pode se tornar um gerador de dívida técnica em escala industrial.
       </p>
 
-      <p className="mb-8">
+      <p className="mb-8 text-white">
         Muitos desenvolvedores cometem o erro de tratar a IA como uma "caixa preta" que entrega soluções prontas, resultando em códigos sem estrutura, alucinações arquiteturais e dependências infladas. A forma mais recomendada de escalar essa produtividade é através do uso de <strong>Agentes Especialistas</strong>.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Os Erros Comuns do Vibecoding "Solitário"</h2>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Os Erros Comuns do Vibecoding "Solitário"</h2>
       <ul className="space-y-4 mb-8">
         <li className="flex flex-col">
-          <strong className="text-text-main">Falta de Contexto Global</strong>
-          <span className="text-text-muted text-base">A IA foca na tarefa imediata e esquece o impacto na arquitetura existente.</span>
+          <strong className="text-white">Falta de Contexto Global</strong>
+          <span className="text-white text-base">A IA foca na tarefa imediata e esquece o impacto na arquitetura existente.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Alucinação de Bibliotecas</strong>
-          <span className="text-text-muted text-base">Inclusão de pacotes inexistentes ou obsoletos sem validação.</span>
+          <strong className="text-white">Alucinação de Bibliotecas</strong>
+          <span className="text-white text-base">Inclusão de pacotes inexistentes ou obsoletos sem validação.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Ausência de Code Review</strong>
-          <span className="text-text-muted text-base">Aceitar o código sem entender a lógica, o que impede a manutenção futura pelo humano.</span>
+          <strong className="text-white">Ausência de Code Review</strong>
+          <span className="text-white text-base">Aceitar o código sem entender a lógica, o que impede a manutenção futura pelo humano.</span>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A Estratégia de Agentes Especialistas</h2>
-      <p className="mb-8">Ao invés de um único chat, o fluxo ideal envolve delegar responsabilidades para agentes com personas distintas:</p>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">A Estratégia de Agentes Especialistas</h2>
+      <p className="mb-8 text-white">Ao invés de um único chat, o fluxo ideal envolve delegar responsabilidades para agentes com personas distintas:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
         <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Project Manager</h4>
-          <p className="text-sm text-text-muted">Define o escopo e garante que a IA não fuja do objetivo principal.</p>
+          <p className="text-sm text-white">Define o escopo e garante que a IA não fuja do objetivo principal.</p>
         </div>
         <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Architect Agent</h4>
-          <p className="text-sm text-text-muted">Valida se o código gerado segue os padrões de Clean Architecture e SOLID.</p>
+          <p className="text-sm text-white">Valida se o código gerado segue os padrões de Clean Architecture e SOLID.</p>
         </div>
         <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Security Auditor</h4>
-          <p className="text-sm text-text-muted">Auditagem automática contra OWASP Top 10 e vazamento de segredos.</p>
+          <p className="text-sm text-white">Auditagem automática contra OWASP Top 10 e vazamento de segredos.</p>
         </div>
         <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Senior Developer</h4>
-          <p className="text-sm text-text-muted">Refatora o código para performance e legibilidade humana.</p>
+          <p className="text-sm text-white">Refatora o código para performance e legibilidade humana.</p>
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Na Prática: Agentes Fullstack</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Na Prática: Agentes Fullstack</h2>
+      <p className="mb-8 text-white">
         No meu projeto <strong>Agentes Fullstack</strong>, explorei exatamente essa orquestração. O sistema demonstra como automatizar a criação de features complexas garantindo que cada linha de código passe por uma esteira de validação inteligente antes de ser persistida.
       </p>
       
@@ -454,8 +454,8 @@ function BlogContentVibeAgents() {
         Acessar Projeto no GitHub: gustavogss/agentes-fullstack
       </a>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
-      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-text-main">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
+      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-white">
         O Vibecoding é o presente, mas os Agentes Especialistas são o futuro do software profissional. Não apenas "vibre", mas orquestre com inteligência.
       </p>
 
@@ -472,34 +472,34 @@ function BlogContentVibeAgents() {
 
 function BlogContentVibecoding() {
   return (
-    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-text-main">
-      <p className="text-xl text-text-main leading-relaxed mb-8">
+    <div className="prose prose-invert prose-brand max-w-none prose-lg font-sans text-white">
+      <p className="text-xl text-white leading-relaxed mb-8">
         O termo "Vibecoding" (escrever código iterando e "conversando" com IA) trouxe uma agilidade inédita para o desenvolvimento de software. Modelos potentes transformam linguagem natural em features completas em minutos.
       </p>
 
-      <p className="mb-8">
+      <p className="mb-8 text-white">
         No entanto, códigos gerados por IA ainda podem introduzir vulnerabilidades de segurança, problemas estruturais de performance e dependências comprometidas sem que a gente perceba — caso não haja revisão atenta. É por isso que o <strong>Vibecoding só é seguro e sustentável com monitoramento e CI/CD estritos</strong>.
       </p>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A Importância da Esteira de CI/CD</h2>
-      <p className="mb-4">Para se beneficiar do Vibecoding e ao mesmo tempo blindar sua aplicação, ter uma pipeline eficiente é fundamental:</p>
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">A Importância da Esteira de CI/CD</h2>
+      <p className="mb-4 text-white">Para se beneficiar do Vibecoding e ao mesmo tempo blindar sua aplicação, ter uma pipeline eficiente é fundamental:</p>
       <ul className="space-y-6 mb-12 list-none p-0">
         <li className="flex flex-col">
-          <strong className="text-text-main">Segurança Shift Left (SAST/DAST)</strong>
-          <span className="text-text-muted text-base">Verificações acionadas no momento do pull request. A IA introduziu uma injeção de SQL ou hardcoded de uma key? A pipeline barra a PR instantaneamente.</span>
+          <strong className="text-white">Segurança Shift Left (SAST/DAST)</strong>
+          <span className="text-white text-base">Verificações acionadas no momento do pull request. A IA introduziu uma injeção de SQL ou hardcoded de uma key? A pipeline barra a PR instantaneamente.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Análise de Composição de Software (SCA)</strong>
-          <span className="text-text-muted text-base">Testar se a IA sugeriu uma biblioteca desatualizada ou com CVE antes da ida para a produção.</span>
+          <strong className="text-white">Análise de Composição de Software (SCA)</strong>
+          <span className="text-white text-base">Testar se a IA sugeriu uma biblioteca desatualizada ou com CVE antes da ida para a produção.</span>
         </li>
         <li className="flex flex-col">
-          <strong className="text-text-main">Linting e Formatters Automatizados</strong>
-          <span className="text-text-muted text-base">A IA escreve código mais próximo de prosa; o CI/CD unifica o estilo arquitetural final de volta ao padrão do time.</span>
+          <strong className="text-white">Linting e Formatters Automatizados</strong>
+          <span className="text-white text-base">A IA escreve código mais próximo de prosa; o CI/CD unifica o estilo arquitetural final de volta ao padrão do time.</span>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Na Prática: Diet Case</h2>
-      <p className="mb-8">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Na Prática: Diet Case</h2>
+      <p className="mb-8 text-white">
         No meu projeto prático "Diet Case", uni a eficiência das IAs a uma esteira rigorosa no GitHub. O projeto demonstra que, além de ser ágil com a IA, é imprescindível criar uma malha de automações para validar testes para que o código esteja maduro sob os critérios de DevSecOps.
       </p>
       
@@ -512,8 +512,8 @@ function BlogContentVibecoding() {
         Acessar Projeto no GitHub: gustavogss/diet-case
       </a>
 
-      <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
-      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-text-main">
+      <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-border-color pb-4">Conclusão</h2>
+      <p className="text-xl p-6 bg-brand-primary/10 border-l-4 border-brand-primary rounded-r-2xl italic text-white">
         O Vibecoding representa o fim do boilerplate, mas eleva o papel do CI/CD como o principal "árbitro" da qualidade do nosso emaranhado digital. Domine as automações e voe tranquilo com a IA.
       </p>
 
