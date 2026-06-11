@@ -8,8 +8,8 @@ export default function ProjectsSection() {
     <div className="space-y-8" id="projects-section">
       <div className="flex items-end justify-center md:justify-between text-center md:text-left">
         <div>
-          <h2 className="text-3xl font-bold text-white">Meus Projetos</h2>
-          <p className="text-slate-400 mt-1">
+          <h2 className="text-3xl font-bold text-text-main">Meus Projetos</h2>
+          <p className="text-text-muted mt-1">
             Uma seleção de trabalhos que combinam design e tecnologia.
           </p>
         </div>
@@ -35,26 +35,26 @@ export default function ProjectsSection() {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent"></div>
             </div>
             <div className="p-6 space-y-4 flex flex-col items-center md:items-start w-full">
-              <h3 className="text-xl font-bold text-white group-hover:text-brand-primary transition-colors">
+              <h3 className="text-xl font-bold text-text-main group-hover:text-brand-primary transition-colors">
                 {project.name}
               </h3>
-              <p className="text-slate-400 text-sm line-clamp-2">
+              <p className="text-text-muted text-sm line-clamp-2">
                 {project.description}
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-2">
                 {project.techs.slice(0, 3).map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-slate-800 text-slate-300 text-[10px] uppercase tracking-wider font-bold rounded-full border border-slate-700"
+                    className="px-3 py-1 bg-bg-card text-text-main text-[10px] uppercase tracking-wider font-bold rounded-full border border-border-color"
                   >
                     {tech}
                   </span>
                 ))}
                 {project.techs.length > 3 && (
-                  <span className="text-[10px] text-slate-500 flex items-center">
+                  <span className="text-[10px] text-text-muted flex items-center">
                     +{project.techs.length - 3} mais
                   </span>
                 )}

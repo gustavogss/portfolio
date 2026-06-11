@@ -22,10 +22,10 @@ export default function SummaryCard({
         <Icon className="text-brand-primary w-8 h-8" />
       </div>
       <div className="space-y-1">
-        <span className="text-3xl font-bold text-white block">{count}</span>
-        <h3 className="text-lg font-bold text-slate-300">{title}</h3>
+        <span className="text-3xl font-bold text-text-main block">{count}</span>
+        <h3 className="text-lg font-bold text-text-main">{title}</h3>
       </div>
-      <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+      <p className="text-text-muted text-sm leading-relaxed">{description}</p>
     </div>
   );
 }

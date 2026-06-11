@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
       "CI/CD",
     ],
     imageUrl:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/task-manager",
   },
   {
@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
       "Aplicativo de finanças pessoais com previsões, simulações de investimentos e insights personalizados, provando habilidades em ecossistema mobile com React Native e Expo.",
     techs: ["React Native", "Expo", "TypeScript", "Nativewind"],
     imageUrl:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/finexyia/tree/main",
   },
   {
@@ -82,7 +82,7 @@ export const PROJECTS: Project[] = [
       "Poderoso script focado em segurança ofensiva (Pentest) para automatizar e facilitar os processos de reconhecimento e OSINT durante engajamentos de cyber segurança.",
     techs: ["Shell Script", "Nmap", "Sherlock", "Linux"],
     imageUrl:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/osint-toolkit",
   },
   {
@@ -92,7 +92,7 @@ export const PROJECTS: Project[] = [
       "Aplicativo para gerenciar listas de compras validando conceitos modernos do ecosistema React, implementado com Expo, TypeScript e persistência via Async Storage.",
     techs: ["React Native", "Expo", "TypeScript", "Async Storage"],
     imageUrl:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/listadecompras",
   },
   {
@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
       "Aplicativo completo de Delivery multiplataforma para dispositivos Android e iOS demonstrando forte domínio no layout com Flutter e UI components robustos.",
     techs: ["Flutter", "Dart", "Material UI"],
     imageUrl:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/delivery",
   },
   {
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
       "Aplicação ToDoList interativa implementada em React.js, TypeScript e Sass — validando conhecimentos práticos de componentização e gerenciamento de estado no frontend.",
     techs: ["React", "TypeScript", "Sass"],
     imageUrl:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=60&w=400",
     link: "https://github.com/gustavogss/todolist-react",
   },
 ];
@@ -165,7 +165,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Se você já tentou estudar Magento 2, sabe que o maior desafio não é o código — é a infraestrutura. Aprenda a rodar do jeito certo.",
     date: "10 Mai 2026",
     imageUrl:
-      "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=60&w=400",
     category: "E-commerce",
   },
   {
@@ -175,7 +175,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A empolgação de usar IA para gerar código (Vibecoding) precisa vir acompanhada de uma pipeline de segurança e monitoramento robusto.",
     date: "10 Mai 2026",
     imageUrl:
-      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=400&q=60",
     category: "IA",
   },
   {
@@ -185,7 +185,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Princípios essenciais de DevSecOps para garantir que seu deploy não seja um pesadelo.",
     date: "10 Mai 2026",
     imageUrl:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=60&w=400",
     category: "Segurança",
   },
   {
@@ -195,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Testar apps iOS sempre foi um desafio custoso para desenvolvedores que não possuem equipamentos da Apple. Veja como resolver isso com Docker.",
     date: "10 Mai 2026",
     imageUrl:
-      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&q=60&w=400",
     category: "Mobile",
   },
   {
@@ -205,7 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A evolução do Vibecoding: como utilizar agentes especialistas para evitar os erros comuns de geração de código e escalar projetos com qualidade.",
     date: "11 Mai 2026",
     imageUrl:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=60&w=400",
     category: "Boas Práticas",
   },
 ];

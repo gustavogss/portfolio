@@ -78,21 +78,21 @@ export default function HomeSection() {
           <img
             src={GUSTAVO_PHOTO}
             alt="Gustavo Souza"
-            className="relative w-40 h-40 rounded-full object-cover border-4 border-slate-900 shadow-2xl"
+            className="relative w-40 h-40 rounded-full object-cover border-4 border-bg-main shadow-2xl"
             id="profile-image"
             fetchPriority="high"
           />
         </div>
         <div className="text-center md:text-left space-y-4">
           <div className="space-y-1">
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-text-main tracking-tight">
               Gustavo Souza
             </h1>
             <p className="text-xl text-brand-primary font-medium">
               Engenheiro de Software | Mobile | DevSecOps
             </p>
           </div>
-          <p className="text-slate-400 max-w-xl leading-relaxed">
+          <p className="text-text-muted max-w-xl leading-relaxed">
             Desenvolvo soluções web e mobile com foco em resultados, segurança,
             ia integrada e automação.
           </p>

@@ -7,8 +7,8 @@ export default function EducationSection() {
   return (
     <div className="space-y-8" id="education-section">
       <div className="text-center md:text-left">
-        <h2 className="text-3xl font-bold text-white">Formação Acadêmica</h2>
-        <p className="text-slate-400 mt-1">
+        <h2 className="text-3xl font-bold text-text-main">Formação Acadêmica</h2>
+        <p className="text-text-muted mt-1">
           Minha base educacional e especializações.
         </p>
       </div>
@@ -23,24 +23,24 @@ export default function EducationSection() {
             className="relative pl-12 md:pl-16 group"
           >
             {/* Dot */}
-            <div className="absolute left-0 top-1 w-10 h-10 md:w-12 md:h-12 rounded-full border border-slate-800 bg-slate-950 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 group-hover:border-brand-primary/50 transition-all z-10">
+            <div className="absolute left-0 top-1 w-10 h-10 md:w-12 md:h-12 rounded-full border border-border-color bg-bg-main flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 group-hover:border-brand-primary/50 transition-all z-10">
               <GraduationCap className="w-5 h-5 md:w-6 h-6" />
             </div>
 
             <div className="glass-morphism p-6 rounded-3xl group-hover:border-brand-primary/20 transition-all flex flex-col md:flex-row justify-between gap-4">
               <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                <h3 className="text-xl font-bold text-white group-hover:text-brand-primary transition-colors">
+                <h3 className="text-xl font-bold text-text-main group-hover:text-brand-primary transition-colors">
                   {edu.degree}
                 </h3>
                 <p className="text-brand-secondary font-medium">
                   {edu.institution}
                 </p>
-                <p className="text-slate-400 text-sm leading-relaxed mt-4">
+                <p className="text-text-muted text-sm leading-relaxed mt-4">
                   {edu.description}
                 </p>
               </div>
               <div className="flex flex-col items-center md:items-end justify-start">
-                <span className="px-4 py-1.5 bg-slate-800 text-brand-primary text-xs font-bold rounded-full border border-slate-700 whitespace-nowrap">
+                <span className="px-4 py-1.5 bg-bg-card text-brand-primary text-xs font-bold rounded-full border border-border-color whitespace-nowrap">
                   {edu.period}
                 </span>
               </div>

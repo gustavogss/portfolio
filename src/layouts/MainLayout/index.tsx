@@ -17,7 +17,7 @@ export default function MainLayout({
 
   return (
     <div
-      className="flex min-h-screen bg-[#030712] pb-16 md:pb-0"
+      className="flex min-h-screen bg-bg-main pb-16 md:pb-0"
       id="dashboard-root"
     >
       <Sidebar

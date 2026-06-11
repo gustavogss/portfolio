@@ -39,8 +39,8 @@ export default function BlogSection({
     <div className="space-y-8" id="blog-section">
       <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between text-center md:text-left gap-4 md:gap-0">
         <div>
-          <h2 className="text-3xl font-bold text-white">Blog & Insights</h2>
-          <p className="text-slate-400 mt-1">
+          <h2 className="text-3xl font-bold text-text-main">Blog & Insights</h2>
+          <p className="text-text-muted mt-1">
             Pensamentos sobre tecnologia, segurança e futuro.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function BlogSection({
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all border ${
               activeCategory === category
                 ? "bg-brand-primary text-white border-brand-primary"
-                : "bg-slate-800/50 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-slate-200"
+                : "bg-bg-card/50 text-text-muted border-border-color hover:bg-bg-card-hover hover:text-text-main"
             }`}
           >
             {category}
@@ -106,7 +106,7 @@ const BlogCard: React.FC<{ post: any; onReadPost: (id: string) => void }> = ({
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-slate-900/80 backdrop-blur-sm text-slate-300 text-[10px] font-bold uppercase rounded-lg">
+            <span className="px-3 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold uppercase rounded-lg">
               {post.date}
             </span>
           </div>
@@ -117,15 +117,15 @@ const BlogCard: React.FC<{ post: any; onReadPost: (id: string) => void }> = ({
           </div>
         </div>
         <div className="p-6 flex flex-col items-center md:items-start text-center md:text-left flex-grow w-full">
-          <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 leading-snug group-hover:text-brand-primary transition-colors">
+          <h3 className="text-xl font-bold text-text-main mb-2 line-clamp-2 leading-snug group-hover:text-brand-primary transition-colors">
             {post.title}
           </h3>
-          <p className="text-slate-400 text-sm mb-6 flex-grow line-clamp-3">
+          <p className="text-text-muted text-sm mb-6 flex-grow line-clamp-3">
             {post.summary}
           </p>
           <button
             onClick={() => onReadPost(post.id)}
-            className="flex items-center gap-2 text-white font-bold text-sm bg-slate-800 hover:bg-brand-primary transition-colors w-full justify-center py-3 rounded-xl border border-slate-700"
+            className="flex items-center gap-2 text-text-main font-bold text-sm bg-bg-card hover:bg-brand-primary hover:text-white transition-colors w-full justify-center py-3 rounded-xl border border-border-color"
           >
             Ler mais
           </button>

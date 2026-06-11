@@ -6,8 +6,8 @@ export default function TechSection() {
   return (
     <div className="space-y-8" id="tech-section">
       <div className="text-center md:text-left">
-        <h2 className="text-3xl font-bold text-white">Stack Tecnológica</h2>
-        <p className="text-slate-400 mt-1">
+        <h2 className="text-3xl font-bold text-text-main">Stack Tecnológica</h2>
+        <p className="text-text-muted mt-1">
           Ferramentas e linguagens que utilizo no meu dia a dia.
         </p>
       </div>
@@ -26,13 +26,13 @@ export default function TechSection() {
               <div className="p-3 bg-brand-primary/10 rounded-2xl">
                 <category.icon className="w-6 h-6 text-brand-primary" />
               </div>
-              <h3 className="font-bold text-white text-lg">{category.title}</h3>
+              <h3 className="font-bold text-text-main text-lg">{category.title}</h3>
             </div>
             <div className="flex flex-wrap justify-center md:justify-start gap-2 w-full">
               {category.items.map((item) => (
                 <span
                   key={item}
-                  className="px-4 py-2 bg-slate-800/50 text-slate-300 text-sm rounded-xl border border-slate-800 hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all text-center flex-grow"
+                  className="px-4 py-2 bg-bg-card/50 text-text-main text-sm rounded-xl border border-border-color hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all text-center flex-grow"
                 >
                   {item}
                 </span>

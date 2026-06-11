@@ -1,17 +1,8 @@
-import { GoogleGenAI } from "@google/genai";
 import type { ResumeInputData, AIResumeResponse, AIOptimizedExperience, AIOptimizedEducation } from "../types/resumeTypes";
 
 // ─── Inicialização segura do client ──────────────────────────────────
 
-let ai: GoogleGenAI | null = null;
-
-try {
-  if (import.meta.env.VITE_GEMINI_API_KEY) {
-    ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
-  }
-} catch (e) {
-  console.warn("GoogleGenAI init failed", e);
-}
+let ai: any = null;
 
 const MAX_GENERATIONS_DEFAULT = 5;
 const MAX_GENERATIONS_OWNER = 50;
@@ -270,8 +261,17 @@ export async function generateResumeContent(
     throw new Error("LIMIT_EXCEEDED");
   }
 
+  if (!ai && import.meta.env.VITE_GEMINI_API_KEY) {
+    try {
+      const { GoogleGenAI } = await import("@google/genai");
+      ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+    } catch (e) {
+      console.error("Falha ao carregar @google/genai dinamicamente:", e);
+    }
+  }
+
   if (!ai) {
-    console.warn("Sem chave do Gemini, retornando dados não alterados.");
+    console.warn("Sem chave do Gemini ou erro no carregamento da IA, retornando fallback.");
     return buildFallback(data);
   }
 
