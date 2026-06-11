@@ -18,9 +18,6 @@ const MAX_GENERATIONS_OWNER = 50;
 const STORAGE_KEY = "ai_generation_count";
 const OWNER_KEY = "portfolio_owner";
 
-<<<<<<< HEAD
-export async function generateResumeContent(data: any) {
-=======
 // ─── Detecção de owner via URL param ─────────────────────────────────
 
 function initOwnerFlag(): void {
@@ -273,60 +270,12 @@ export async function generateResumeContent(
     throw new Error("LIMIT_EXCEEDED");
   }
 
->>>>>>> 84d975c (feat: arquiteture)
   if (!ai) {
     console.warn("Sem chave do Gemini, retornando dados não alterados.");
     return buildFallback(data);
   }
 
-<<<<<<< HEAD
-  const prompt = `
-    ### AGENTE ESPECIALISTA: RESUME & CV MANAGER
-    Você é um recrutador técnico sênior e especialista em redação de currículos (CVs) de alto impacto para a área de Tecnologia.
-    
-    ### OBJETIVO
-    Otimizar as experiências profissionais e projetos de GUSTAVO SOUZA para um currículo em PDF.
-    O texto deve ter concordância perfeita, ser profissional, coerente e focado em resultados técnicos.
-
-    ### REGRAS CRÍTICAS (ANTI-ALUCINAÇÃO)
-    1. USE APENAS OS DADOS FORNECIDOS ABAIXO. NUNCA invente empresas, cargos, datas ou responsabilidades fictícias.
-    2. FIDELIDADE AOS DADOS: Se a descrição original diz "Uso de Docker", não diga que houve "Liderança de time de infraestrutura" a menos que esteja no texto.
-    3. TOM DE VOZ: Executivo e pragmático. Use verbos de ação (Implementou, Desenvolveu, Otimizou).
-    4. FORMATAÇÃO: Use bullet points (•) para listar responsabilidades e conquistas.
-    5. FORMAÇÃO E DATAS: Garanta que todas as datas e períodos de formação acadêmica e experiências sejam preservados e destacados.
-    6. RESUMO PROFISSIONAL: Crie um parágrafo de 3-4 frases que sintetize a expertise em Engenharia de Software, Desenvolvimento Mobile e DevSecOps.
-
-    ### FONTE ÚNICA DE VERDADE (DADOS BRUTOS)
-    ${JSON.stringify({
-      role: data.role,
-      experiences: data.experiences,
-      projects: data.projects,
-      education: data.education,
-      techCategories: data.techCategories
-    })}
-    
-    ### FORMATO DE RETORNO (JSON OBRIGATÓRIO)
-    {
-      "professionalSummary": "Resumo executivo de impacto baseado nos dados...",
-      "optimizedExperiences": [
-        {
-          "company": "Nome da Empresa",
-          "role": "Cargo",
-          "period": "Período",
-          "description": "• Responsabilidade 1\n• Conquista técnica 2\n• Implementação de X usando Y"
-        }
-      ],
-      "optimizedProjects": [
-        {
-          "name": "Nome do Projeto",
-          "description": "Explicação técnica clara focada em solução e impacto."
-        }
-      ]
-    }
-  `;
-=======
   const prompt = buildPrompt(data);
->>>>>>> 84d975c (feat: arquiteture)
 
   try {
     const response = await ai.models.generateContent({
@@ -338,10 +287,6 @@ export async function generateResumeContent(
     });
 
     if (response && response.text) {
-<<<<<<< HEAD
-      const result = JSON.parse(response.text);
-      return result;
-=======
       const parsed: unknown = JSON.parse(response.text);
 
       if (isValidAIResponse(parsed)) {
@@ -350,24 +295,11 @@ export async function generateResumeContent(
       }
 
       console.warn("Resposta da IA em formato inesperado, usando fallback.");
->>>>>>> 84d975c (feat: arquiteture)
     }
   } catch (error) {
     console.error("Erro ao gerar com IA:", error);
   }
 
-<<<<<<< HEAD
-function fallbackData(data: any) {
-  return {
-    professionalSummary: "Engenheiro de Software com ampla especialização em ecossistema Mobile (React Native, Flutter) e Web, com vivência arquitetando soluções pautadas na cultura DevSecOps, metodologias ágeis e integrações com IA. Focado na esteira de desenvolvimento segura através de ferramentas DAST/SAST, OWASP e otimização de performance técnica.",
-    optimizedExperiences: data.experiences.map((exp: any) => ({
-      ...exp,
-      description: `• ${exp.description.split('. ').join('\n• ')}`
-    })),
-    optimizedProjects: data.projects
-  };
-=======
   // Fallback em caso de qualquer falha
   return buildFallback(data);
->>>>>>> 84d975c (feat: arquiteture)
 }

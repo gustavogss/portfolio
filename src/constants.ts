@@ -121,11 +121,7 @@ export const TECH_CATEGORIES: TechCategory[] = [
   {
     title: "IA & Automação",
     icon: Layers,
-<<<<<<< HEAD
-    items: ['LLMs', 'Langchain', 'N8N', 'RAG', 'MCP', 'Claude', 'Ollama']
-=======
-    items: ["LLMs", "Langchain", "N8N", "RAG", "Claude", "Ollama"],
->>>>>>> 84d975c (feat: arquiteture)
+    items: ["LLMs", "Langchain", "N8N", "RAG", "MCP", "Claude", "Ollama"],
   },
   {
     title: "Mobile & Frontend",
@@ -135,23 +131,12 @@ export const TECH_CATEGORIES: TechCategory[] = [
   {
     title: "Backend",
     icon: Code2,
-<<<<<<< HEAD
-    items: ['Node.js', 'Fastify', 'Firebase', 'TypeScript', 'PostgreSQL', 'Prisma']
+    items: ["Node.js", "Fastify", "Python", "Firebase", "TypeScript", "PostgreSQL", "Prisma"],
   },
   {
-    title: 'Metodologias',
+    title: "Metodologias",
     icon: Terminal,
-    items: ['UML', 'Scrum', 'XP', 'Kanban', 'Git Flow', 'Clean Code']
-=======
-    items: [
-      "Node.js",
-      "Fastify",
-      "Python",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-    ],
->>>>>>> 84d975c (feat: arquiteture)
+    items: ["UML", "Scrum", "XP", "Kanban", "Git Flow", "Clean Code"],
   },
   {
     title: "DevSecOps",
@@ -169,11 +154,6 @@ export const TECH_CATEGORIES: TechCategory[] = [
     title: "Segurança da Informação",
     icon: Globe,
     items: ["Kali Linux", "Hydra", "Nmap", "OWASP Top 10", "OSINT", "Pentest"],
-  },
-  {
-    title: "Metodologias",
-    icon: Globe,
-    items: ["Scrum", "Kaban", "XP"],
   },
 ];
 
