@@ -77,7 +77,7 @@ export default function Sidebar({
               />
             </div>
             {isOpen && (
-              <span className="font-display font-bold text-xl tracking-tight text-text-main whitespace-nowrap">
+              <span className="font-display font-bold text-xl tracking-tight text-white bg-transparent whitespace-nowrap">
                 Gustavo Souza
               </span>
             )}

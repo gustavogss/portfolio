@@ -61,7 +61,8 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-4xl bg-bg-main rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] z-10 border border-border-color"
+        className="relative w-full max-w-4xl bg-[#0f172a] rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] z-10 border border-[#334155]"
+        data-blog-modal
       >
         <button 
           onClick={onBack}
@@ -193,7 +194,7 @@ function BlogContentMagento() {
       <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">O que tem por trás</h2>
       <div className="flex flex-wrap gap-3 mb-12">
         {['PHP', 'MySQL', 'Nginx', 'Redis', 'Elasticsearch'].map((tech) => (
-          <span key={tech} className="px-4 py-2 bg-[#212121] border border-border-color rounded-lg text-text-main font-medium">
+          <span key={tech} className="px-4 py-2 bg-[#212121] border border-border-color rounded-lg text-[#cccccc] font-medium">
             {tech}
           </span>
         ))}
@@ -421,19 +422,19 @@ function BlogContentVibeAgents() {
       <h2 className="text-2xl font-bold text-text-main mt-12 mb-6 border-b border-border-color pb-4">A Estratégia de Agentes Especialistas</h2>
       <p className="mb-8">Ao invés de um único chat, o fluxo ideal envolve delegar responsabilidades para agentes com personas distintas:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-        <div className="p-6 bg-bg-card/50 rounded-2xl border border-slate-700">
+        <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Project Manager</h4>
           <p className="text-sm text-text-muted">Define o escopo e garante que a IA não fuja do objetivo principal.</p>
         </div>
-        <div className="p-6 bg-bg-card/50 rounded-2xl border border-slate-700">
+        <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Architect Agent</h4>
           <p className="text-sm text-text-muted">Valida se o código gerado segue os padrões de Clean Architecture e SOLID.</p>
         </div>
-        <div className="p-6 bg-bg-card/50 rounded-2xl border border-slate-700">
+        <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Security Auditor</h4>
           <p className="text-sm text-text-muted">Auditagem automática contra OWASP Top 10 e vazamento de segredos.</p>
         </div>
-        <div className="p-6 bg-bg-card/50 rounded-2xl border border-slate-700">
+        <div className="p-6 bg-bg-card/50 rounded-2xl border border-[#334155]">
           <h4 className="text-brand-primary font-bold mb-2">Senior Developer</h4>
           <p className="text-sm text-text-muted">Refatora o código para performance e legibilidade humana.</p>
         </div>
