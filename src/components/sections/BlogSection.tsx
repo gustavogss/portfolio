@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { BLOG_POSTS } from '../../constants';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 export function BlogSection({ onReadPost }: { onReadPost: (id: string) => void }) {
-  const categoriesRaw = Array.from(new Set(BLOG_POSTS.map(post => post.category)));
+  const { blogPosts } = usePortfolio();
+  const posts = blogPosts || [];
+
+  const categoriesRaw = Array.from(new Set(posts.map((post: any) => post.category)));
   categoriesRaw.sort((a, b) => {
-    const aHasPublished = BLOG_POSTS.some(p => p.category === a && p.date !== 'Em breve');
-    const bHasPublished = BLOG_POSTS.some(p => p.category === b && p.date !== 'Em breve');
+    const aHasPublished = posts.some((p: any) => p.category === a && p.date !== 'Em breve');
+    const bHasPublished = posts.some((p: any) => p.category === b && p.date !== 'Em breve');
     if (aHasPublished && !bHasPublished) return -1;
     if (!aHasPublished && bHasPublished) return 1;
     return 0;
   });
-  const categories = ['Todos', ...categoriesRaw];
+  const categories: string[] = ['Todos', ...(categoriesRaw as string[])];
   const [activeCategory, setActiveCategory] = useState('Todos');
 
   const filteredPosts = activeCategory === 'Todos' 
-    ? BLOG_POSTS 
-    : BLOG_POSTS.filter(post => post.category === activeCategory);
+    ? posts 
+    : posts.filter((post: any) => post.category === activeCategory);
 
   return (
     <div className="space-y-8" id="blog-section">
@@ -47,7 +50,7 @@ export function BlogSection({ onReadPost }: { onReadPost: (id: string) => void }
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
         id="blog-grid"
       >
-        {filteredPosts.map((post) => (
+        {filteredPosts.map((post: any) => (
           <BlogCard key={post.id} post={post} onReadPost={onReadPost} />
         ))}
       </div>

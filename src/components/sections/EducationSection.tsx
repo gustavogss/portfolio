@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { GraduationCap } from 'lucide-react';
-import { EDUCATION } from '../../constants';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 export function EducationSection() {
+  const { education } = usePortfolio();
+  const list = education || [];
+
   return (
     <div className="space-y-8" id="education-section">
       <div className="text-center md:text-left">
@@ -12,7 +15,7 @@ export function EducationSection() {
       </div>
       
       <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 md:before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-linear-to-b before:from-brand-primary/20 before:via-brand-secondary/40 before:to-transparent">
-        {EDUCATION.map((edu, idx) => (
+        {list.map((edu: any, idx: number) => (
           <motion.div 
             key={`${edu.institution}-${idx}`}
             initial={{ opacity: 0, x: -20 }}
@@ -30,7 +33,25 @@ export function EducationSection() {
                   {edu.degree} {(edu.period?.includes('2026') || edu.period?.toLowerCase().includes('presente')) && <span className="text-[10px] text-brand-primary font-bold">(Em formação)</span>}
                 </h3>
                 <p className="text-brand-secondary font-medium">{edu.institution}</p>
-                <p className="text-slate-400 text-sm leading-relaxed mt-4">{edu.description}</p>
+                {edu.description && (
+                  <div className="text-slate-400 text-sm leading-relaxed mt-4 space-y-1 w-full text-left">
+                    {edu.description.includes('\n') ? (
+                      edu.description.split('\n').map((line: string, lIdx: number) => {
+                        if (line.trim().startsWith('-')) {
+                          return (
+                            <div key={lIdx} className="flex gap-2 items-start text-left">
+                              <span className="text-brand-primary mt-1.5">•</span>
+                              <span>{line.trim().substring(1).trim()}</span>
+                            </div>
+                          );
+                        }
+                        return <p key={lIdx} className="text-left">{line}</p>;
+                      })
+                    ) : (
+                      <p className="text-left">{edu.description}</p>
+                    )}
+                  </div>
+                )}
               </div>
               <div className="flex flex-col items-center md:items-end justify-start">
                 <span className="px-4 py-1.5 bg-slate-800 text-brand-primary text-xs font-bold rounded-full border border-slate-700 whitespace-nowrap">

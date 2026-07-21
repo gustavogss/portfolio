@@ -2,5 +2,5 @@
   "name": "Gustavo Souza",
   "description": "Dashboard de portfólio profissional focado em desenvolvimento, segurança e IA.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

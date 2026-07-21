@@ -10,12 +10,180 @@
         "lastGenerationAt": { "type": "string", "format": "date-time" }
       },
       "required": ["userId", "generationsCount"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project item",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "techs": { "type": "array" },
+        "github": { "type": "string" },
+        "link": { "type": "string" },
+        "category": { "type": "string" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["name", "description"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "A blog post item",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["title", "summary"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "A completed course/specialization",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "issuer": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "link": { "type": "string" }
+      },
+      "required": ["title", "issuer"]
+    },
+    "Skill": {
+      "title": "Skill",
+      "description": "A professional skill item",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "level": { "type": "string" },
+        "color": { "type": "string" },
+        "icon": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["name", "category"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Global portfolio configuration settings",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "logo": { "type": "string" },
+        "platformName": { "type": "string" },
+        "portfolioName": { "type": "string" },
+        "github": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "instagram": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "theme": { "type": "string" },
+        "favicon": { "type": "string" },
+        "heroImage": { "type": "string" },
+        "aboutImage": { "type": "string" },
+        "resumeUrl": { "type": "string" }
+      },
+      "required": ["name", "title"]
+    },
+    "Experience": {
+      "title": "Experience",
+      "description": "A professional work experience entry",
+      "type": "object",
+      "properties": {
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "period": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["company", "role", "period"]
+    },
+    "Education": {
+      "title": "Education",
+      "description": "An academic/education entry",
+      "type": "object",
+      "properties": {
+        "institution": { "type": "string" },
+        "degree": { "type": "string" },
+        "period": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["institution", "degree", "period"]
+    },
+    "Certification": {
+      "title": "Certification",
+      "description": "A professional certification",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "issuer": { "type": "string" },
+        "date": { "type": "string" },
+        "link": { "type": "string" }
+      },
+      "required": ["name", "issuer"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "An administrative notification",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" },
+        "type": { "type": "string" }
+      },
+      "required": ["title", "description"]
     }
   },
   "firestore": {
     "/usage/{userId}": {
       "schema": "UserUsage",
       "description": "Usage limits data for each user"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Portfolio projects collection"
+    },
+    "/posts/{postId}": {
+      "schema": "Post",
+      "description": "Blog posts collection"
+    },
+    "/courses/{courseId}": {
+      "schema": "Course",
+      "description": "Completed courses collection"
+    },
+    "/skills/{skillId}": {
+      "schema": "Skill",
+      "description": "Skills collection"
+    },
+    "/settings/{settingsId}": {
+      "schema": "Settings",
+      "description": "Global config settings"
+    },
+    "/experiences/{expId}": {
+      "schema": "Experience",
+      "description": "Professional experiences"
+    },
+    "/education/{eduId}": {
+      "schema": "Education",
+      "description": "Education entries"
+    },
+    "/certifications/{certId}": {
+      "schema": "Certification",
+      "description": "Certifications collection"
+    },
+    "/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "CMS system notifications"
     }
   }
 }

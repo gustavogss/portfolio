@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Award } from 'lucide-react';
-import { CERTIFICATIONS } from '../../constants';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
 export function CertificationsSection() {
+  const { certifications } = usePortfolio();
+  const certs = certifications || [];
+
   return (
     <div className="space-y-8" id="certifications-section">
       <div className="text-center md:text-left">
@@ -12,7 +15,7 @@ export function CertificationsSection() {
       </div>
       
       <div className="relative space-y-6 before:absolute before:inset-0 before:ml-5 md:before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-linear-to-b before:from-brand-primary/20 before:via-brand-secondary/40 before:to-transparent">
-        {CERTIFICATIONS.map((cert, idx) => (
+        {certs.map((cert: any, idx: number) => (
           <motion.div 
             key={cert.id}
             initial={{ opacity: 0, x: -20 }}

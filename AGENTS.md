@@ -4,7 +4,7 @@ Este arquivo é automaticamente carregado pelo **AI Studio** e serve como o prin
 
 ## Identidade do Projeto
 - **Dono:** Gustavo Souza (@gustavogss)
-- **Role:** Engenheiro de Software | Mobile | DevSecOps
+- **Role:** Engenheiro de Software | Mobile | AppSec
 - **Foco Técnico:** DevSecOps (SAST, DAST, OWASP), Mobile (Flutter, React Native), IA (LLMs, Langchain, RAG, N8N, Ollama) e Frontend (React, Tailwind).
 
 ## Personas Especialistas (Agentes)
@@ -22,5 +22,3 @@ Para evitar perda de contexto durante a iteração, adote a postura do agente qu
 5. **Datas e Status:** Itens de Formação ou Certificações datados do ano corrente (2026) ou como "Presente" devem obrigatoriamente incluir a observação "(Em formação)" ou "(Especializando-se)".
 6. **Tecnologias:** Nomes de tecnologias devem estar completos e legíveis, sem truncamento.
 7. **Segurança de Segredos:** É terminantemente proibido expor credenciais, chaves de API ou segredos (como Firebase Config) diretamente no código frontend. Use sempre variáveis de ambiente.
-8. **Nunca invente informações:** A IA e os agentes devem usar **exclusivamente** os dados que existem no site (`constants.ts`). Pode otimizar, reformular e enriquecer os textos, mas **nunca adicionar informações que não estejam na base de dados real** (exemplo: não inventar metodologias, ferramentas, habilidades ou detalhes que não constem nos dados do portfólio).
-

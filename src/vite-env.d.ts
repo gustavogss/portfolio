@@ -1,10 +1,26 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly VITE_GEMINI_API_KEY: string;
-  readonly VITE_APP_URL: string;
+declare module '*?format=webp' {
+  const src: string;
+  export default src;
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+declare module '*?format=avif' {
+  const src: string;
+  export default src;
+}
+
+declare module '*?format=webp&as=url' {
+  const src: string;
+  export default src;
+}
+
+declare module '*?format=avif&as=url' {
+  const src: string;
+  export default src;
+}
+
+declare module '*?as=metadata' {
+  const metadata: any;
+  export default metadata;
 }

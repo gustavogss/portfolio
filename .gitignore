@@ -6,8 +6,4 @@ coverage/
 *.log
 .env*
 .env
-<<<<<<< HEAD
-=======
-.env.local
->>>>>>> 84d975c (feat: arquiteture)
 !.env.example

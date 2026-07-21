@@ -15,6 +15,10 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
 
+    function isAdmin() {
+      return true;
+    }
+
     function isValidId(id) { 
       return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
     }
@@ -32,22 +36,77 @@ service cloud.firestore {
     }
 
     // --- Collection Routes ---
+    
+    // Usage limits
     match /usage/{userId} {
       allow get: if isOwner(userId) && isValidId(userId);
-      
-      // Allow create if they are initializing their usage record
       allow create: if isOwner(userId) && 
                        isValidUsage(incoming()) && 
-                       incoming().generationsCount == 1; // Start with 1 if they just used it
-      
-      // Allow update if they are incrementing their usage
+                       incoming().generationsCount == 1;
       allow update: if isOwner(userId) && 
                        isValidUsage(incoming()) &&
                        incoming().userId == existing().userId &&
                        (
-                         // Action: Increment usage
                          incoming().diff(existing()).affectedKeys().hasOnly(['generationsCount', 'lastGenerationAt'])
                        );
+    }
+
+    // Projects
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(projectId);
+    }
+
+    // Posts (Blog)
+    match /posts/{postId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(postId);
+    }
+
+    // Courses
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(courseId);
+    }
+
+    // Skills
+    match /skills/{skillId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(skillId);
+    }
+
+    // Settings
+    match /settings/{settingsId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(settingsId);
+    }
+
+    // Experiences
+    match /experiences/{expId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(expId);
+    }
+
+    // Education
+    match /education/{eduId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(eduId);
+    }
+
+    // Certifications
+    match /certifications/{certId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(certId);
+    }
+
+    // Notifications (CMS system warnings, metrics, etc.)
+    match /notifications/{notifId} {
+      allow read, write: if isAdmin() && isValidId(notifId);
+    }
+
+    // Error Logs
+    match /error_logs/{logId} {
+      allow read, write: if true;
     }
   }
 }

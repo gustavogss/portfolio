@@ -1,3 +1,68 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./assets/fonts/inter-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/inter-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/inter-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/inter-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/outfit-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/outfit-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/outfit-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/outfit-700.woff2') format('woff2');
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -6,43 +71,12 @@
   
   --color-brand-primary: #721993;
   --color-brand-secondary: #9d26c1;
-  
-  --color-bg-main: var(--bg-main);
-  --color-bg-sidebar: var(--bg-sidebar);
-  --color-bg-card: var(--bg-card);
-  --color-bg-card-hover: var(--bg-card-hover);
-  --color-border-color: var(--border-color);
-  --color-text-main: var(--text-main);
-  --color-text-muted: var(--text-muted);
-}
-
-:root {
-  --bg-main: #f8fafc;
-  --bg-sidebar: #212121;
-  --bg-card: #f1f5f9;
-  --bg-card-hover: #e2e8f0;
-  --border-color: #cbd5e1;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(0, 0, 0, 0.05);
-}
-
-html.dark {
-  --bg-main: #030712;
-  --bg-sidebar: #212121;
-  --bg-card: #1e293b; 
-  --bg-card-hover: #334155; 
-  --border-color: #334155; 
-  --text-main: #ffffff;
-  --text-muted: #94a3b8; 
-  --glass-bg: rgba(33, 33, 33, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --color-sidebar-bg: #212121;
 }
 
 @layer base {
   body {
-    @apply bg-bg-main text-text-main antialiased selection:bg-brand-primary/30 transition-colors duration-300;
+    @apply bg-[#030712] text-white antialiased selection:bg-brand-primary/30;
   }
   
   h1, h2, h3, h4 {
@@ -51,56 +85,7 @@ html.dark {
 }
 
 .glass-morphism {
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-}
-
-/* Sidebar sempre usa cores do dark mode pois o fundo é sempre #212121 */
-#sidebar,
-nav.fixed.bottom-0 {
-  --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-color: #334155;
-}
-
-/* Modal do artigo sempre leitura dark (fundo #0f172a fixo) */
-[data-blog-modal] {
-  --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-color: #334155;
-  --bg-card: #1e293b;
-  --bg-card-hover: #334155;
-  color: #ffffff;
-}
-
-[data-blog-modal] p,
-[data-blog-modal] li,
-[data-blog-modal] ol,
-[data-blog-modal] ul,
-[data-blog-modal] h1,
-[data-blog-modal] h2,
-[data-blog-modal] h3,
-[data-blog-modal] h4,
-[data-blog-modal] h5,
-[data-blog-modal] h6,
-[data-blog-modal] strong,
-[data-blog-modal] span:not(.text-brand-primary):not(.text-text-muted):not(.text-[#cccccc]) {
-  color: inherit;
-}
-
-[data-blog-modal] .prose {
-  --tw-prose-body: #ffffff;
-  --tw-prose-headings: #ffffff;
-  --tw-prose-lead: #e2e8f0;
-  --tw-prose-links: #a855f7;
-  --tw-prose-bold: #ffffff;
-  --tw-prose-counters: #94a3b8;
-  --tw-prose-bullets: #94a3b8;
-  --tw-prose-hr: #334155;
-  --tw-prose-quotes: #e2e8f0;
-  --tw-prose-code: #e2e8f0;
-  color: #ffffff;
+  @apply bg-[#212121]/40 backdrop-blur-md border border-white/5;
 }
 
 .gradient-text {
@@ -118,5 +103,5 @@ nav.fixed.bottom-0 {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-bg-card-hover rounded-full hover:bg-border-color transition-colors;
+  @apply bg-slate-700 rounded-full hover:bg-slate-600 transition-colors;
 }

@@ -4,28 +4,29 @@ import {
   Loader2, 
   Layers, 
   Cpu, 
-  Newspaper 
+  Newspaper,
+  FileText
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { User as FirebaseUser } from 'firebase/auth';
 import { checkGenerationLimit, incrementGenerationCount } from '../../lib/firebase';
-import { generateResumeContent } from '../../services/geminiService';
-// Removed static import of generateResumePDF
-import { 
-  PROJECTS, 
-  TECH_CATEGORIES, 
-  EXPERIENCES,
-  EDUCATION,
-  CERTIFICATIONS 
-} from '../../constants';
+import { usePortfolio } from '../../contexts/PortfolioContext';
 
-const GUSTAVO_GITHUB = "https://github.com/gustavogss";
-const GUSTAVO_LINKEDIN = "https://www.linkedin.com/in/gustavosouza-jp/";
 const GUSTAVO_PHOTO = "https://github.com/gustavogss.png";
 
 export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLogin: () => void }) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [remainingGenerations, setRemainingGenerations] = useState(5);
+  const portfolioData = usePortfolio();
+  
+  const { 
+    settings, 
+    experiences, 
+    projects, 
+    education, 
+    techCategories,
+    certifications
+  } = portfolioData || {};
 
   useEffect(() => {
     if (user) {
@@ -46,13 +47,14 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
     setIsGenerating(true);
     try {
       const data = {
-        role: "Engenheiro de Software | Mobile | AppSec",
-        experiences: EXPERIENCES,
-        projects: PROJECTS,
-        education: EDUCATION,
-        techCategories: TECH_CATEGORIES
+        role: settings?.title || "Engenheiro de Software | Mobile | AppSec",
+        experiences: experiences || [],
+        projects: projects || [],
+        education: education || [],
+        techCategories: techCategories || []
       };
       
+      const { generateResumeContent } = await import('../../services/geminiService');
       const aiContent = await generateResumeContent(data);
       await incrementGenerationCount(user!.uid).catch(console.error);
       
@@ -60,14 +62,14 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
       setRemainingGenerations(remaining);
       
       const userProfile = {
-        name: "Gustavo Souza",
-        role: "Engenheiro de Software | Mobile | AppSec",
-        email: "contato@gustavosouza.dev.br",
-        github: GUSTAVO_GITHUB,
-        linkedin: GUSTAVO_LINKEDIN,
-        education: EDUCATION,
-        certifications: CERTIFICATIONS,
-        techCategories: TECH_CATEGORIES
+        name: settings?.name || "Gustavo Souza",
+        role: settings?.title || "Engenheiro de Software | Mobile | AppSec",
+        email: settings?.email || "contato@gustavosouza.dev.br",
+        github: settings?.github,
+        linkedin: settings?.linkedin,
+        education: education || [],
+        certifications: certifications || [],
+        techCategories: techCategories || []
       };
 
       const { generateResumePDF } = await import('../../lib/pdfGenerator');
@@ -84,45 +86,47 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
     }
   };
 
+  const handleDownloadStaticPDF = async () => {
+    try {
+      const { generateStaticPDF } = await import('../../lib/staticPdfGenerator');
+      generateStaticPDF(portfolioData);
+    } catch (error) {
+      console.error("Erro ao gerar PDF:", error);
+      alert("Houve um erro ao baixar o currículo em PDF.");
+    }
+  };
+
   return (
     <div className="space-y-12" id="home-section">
       <section className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 glass-morphism p-8 rounded-3xl text-center md:text-left" id="profile-card">
         <div className="relative group">
           <div className="absolute -inset-1 bg-linear-to-r from-brand-primary to-brand-secondary rounded-full blur-md opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
           <img 
-            src={GUSTAVO_PHOTO} 
-            alt="Gustavo Souza" 
+            src={settings?.photoUrl || GUSTAVO_PHOTO} 
+            alt={settings?.name || "Gustavo Souza"} 
             className="relative w-40 h-40 rounded-full object-cover border-4 border-slate-900 shadow-2xl" 
             id="profile-image"
           />
         </div>
         <div className="text-center md:text-left space-y-4">
           <div className="space-y-1">
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Gustavo Souza</h1>
-            <p className="text-xl text-brand-primary font-medium">Engenheiro de Software | Mobile | AppSec</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{settings?.name || 'Gustavo Souza'}</h1>
+            <p className="text-xl text-brand-primary font-medium">{settings?.title || 'Engenheiro de Software | Mobile | AppSec'}</p>
           </div>
           <p className="text-slate-400 max-w-xl leading-relaxed">
-            Desenvolvo soluções web e mobile com foco em resultados, segurança, ia integrada e automação.
+            {settings?.description || 'Desenvolvo soluções web e mobile com foco em resultados, segurança, ia integrada e automação.'}
           </p>
-          <div className="flex justify-center md:justify-start pt-2 flex-col gap-2 items-center md:items-start">
-            <button 
-              id="generate-cv"
-              onClick={handleGenerateResume}
-              disabled={isGenerating || (user && remainingGenerations <= 0)}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-white font-bold hover:scale-105 transition-all shadow-lg shadow-brand-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 w-fit"
-            >
-              {isGenerating ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <Download className="w-5 h-5" />
-              )}
-              <span>{isGenerating ? 'IA Gerando...' : 'Gerar Currículo (IA)'}</span>
-            </button>
-            {user && (
-              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest pl-1">
-                Restante: {remainingGenerations} / 5 gerações
-              </span>
-            )}
+          <div className="flex flex-col gap-3 pt-2 w-full">
+            <div className="flex items-center justify-center md:justify-start w-full">
+              <button 
+                id="download-static-pdf"
+                onClick={handleDownloadStaticPDF}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-brand-primary to-brand-secondary text-white font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-brand-primary/20 w-full sm:w-auto justify-center cursor-pointer"
+              >
+                <Download className="w-5 h-5 text-white" />
+                <span>Baixar CV (PDF)</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -131,21 +135,21 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
         <SummaryCard 
           id="summary-projects"
           icon={Layers} 
-          count="+100" 
+          count={`+${projects?.length || 0}`}
           title="Projetos e Aplicações" 
           description="Aplicações full-stack, SaaS, e aplicativos para Android e IOS." 
         />
         <SummaryCard 
           id="summary-tech"
           icon={Cpu} 
-          count="+20" 
+          count={`+${techCategories?.length || 0}`}
           title="Tecnologias" 
           description="Domínio técnico em metodologias ágeis, desenvolvimento moderno, automação e inteligência artificial." 
         />
         <SummaryCard 
           id="summary-blog"
           icon={Newspaper} 
-          count="+5" 
+          count={`+${portfolioData?.blogPosts?.length || 0}`}
           title="Artigos Publicados" 
           description="Compartilhando experiências práticas, desafios reais e soluções técnicas focadas em desenvolvimento Web, Mobile e Segurança." 
         />
