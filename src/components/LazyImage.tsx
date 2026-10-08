@@ -12,6 +12,10 @@ export function LazyImage({ src, alt, className, ...props }: LazyImageProps) {
   const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsLoaded(false);
+  }, [src]);
+
+  useEffect(() => {
     // If IntersectionObserver is not supported, load the image immediately
     if (!window.IntersectionObserver) {
       setIsInView(true);
@@ -59,8 +63,13 @@ export function LazyImage({ src, alt, className, ...props }: LazyImageProps) {
         <img
           src={src}
           alt={alt}
+          ref={(el) => {
+            if (el && el.complete && el.naturalWidth > 0 && !isLoaded) {
+              setIsLoaded(true);
+            }
+          }}
           onLoad={() => setIsLoaded(true)}
-          referrerPolicy="no-referrer"
+          onError={() => setIsLoaded(true)}
           className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
             isLoaded 
               ? 'opacity-100 scale-100 blur-0' 

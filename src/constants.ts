@@ -16,26 +16,29 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-const projectTaskManager = 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=400&q=80';
+// Projetos — sincronizado com CoursesAdmin.tsx DEFAULT_ASSETS
+const projectTaskManager = 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=400&q=80';
 const projectFinexyia = 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80';
-const projectOsintToolkit = 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80';
+const projectOsintToolkit = 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=400&q=80';
 const projectListadecompras = 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80';
-const projectDelivery = 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80';
-const projectTodolistReact = 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80';
-const projectSosjampa = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80';
+const projectDelivery = 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80';
+const projectTodolistReact = 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80';
+const projectSosjampa = 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=80';
 
-const postMagento2 = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80';
-const postVibecodingSeguro = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80';
+// Posts — sincronizado com CoursesAdmin.tsx DEFAULT_ASSETS
+const postMagento2 = 'https://images.unsplash.com/photo-1652156752342-c786f1e1d1ce?auto=format&fit=crop&w=400&q=80';
+const postVibecodingSeguro = 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=400&q=80';
 const postSegurancaPrimeiro = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80';
-const postEmuladorIos = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80';
+const postEmuladorIos = 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80';
 const postVibeAgents = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80';
 const postSiteToApp = 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80';
 
-const courseIa = 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=400&q=80';
-const coursePentest = 'https://images.unsplash.com/photo-1601597111158-2fceff270190?auto=format&fit=crop&w=400&q=80';
-const courseDevops = 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=400&q=80';
-const courseFullstack = 'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=400&q=80';
-const courseCybersecurity = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80';
+// Cursos — sincronizado com CoursesAdmin.tsx DEFAULT_ASSETS
+const courseIa = 'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?auto=format&fit=crop&w=400&q=80';
+const coursePentest = 'https://images.unsplash.com/photo-1519575706483-221027bfbb31?auto=format&fit=crop&w=400&q=80';
+const courseDevops = 'https://images.unsplash.com/photo-1667372335937-d03be6fb0a9c?auto=format&fit=crop&w=400&q=80';
+const courseFullstack = 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80';
+const courseCybersecurity = 'https://images.unsplash.com/photo-1590065707046-4fde65275b2e?auto=format&fit=crop&w=400&q=80';
 
 export interface Project {
   id: string;

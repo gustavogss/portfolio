@@ -499,12 +499,12 @@ function BlogContentVibecoding() {
       </p>
       
       <a 
-        href="https://github.com/gustavogss/diet-case" 
+        href="https://github.com/gustavogss/dietcase" 
         target="_blank" 
         rel="noopener noreferrer"
         className="block p-6 bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-brand-primary rounded-2xl transition-all break-all text-brand-primary font-medium text-center mb-12"
       >
-        Acessar Projeto no GitHub: gustavogss/diet-case
+        Acessar Projeto no GitHub: gustavogss/dietcase
       </a>
 
       <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-b border-white/10 pb-4">Conclusão</h2>

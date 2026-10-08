@@ -34,18 +34,18 @@ const initialFormState: ProjectFormState = {
 };
 
 const DEFAULT_ASSETS = [
-  { name: 'post-emulador-ios.jpg', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-magento2.jpg', url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80' },
+  { name: 'post-emulador-ios.jpg', url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80' },
+  { name: 'post-magento2.jpg', url: 'https://images.unsplash.com/photo-1652156752342-c786f1e1d1ce?auto=format&fit=crop&w=400&q=80' },
   { name: 'post-seguranca-primeiro.jpg', url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80' },
   { name: 'post-vibe-agents.jpg', url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-vibecoding-seguro.jpg', url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-delivery.jpg', url: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80' },
+  { name: 'post-vibecoding-seguro.jpg', url: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=400&q=80' },
+  { name: 'project-delivery.jpg', url: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80' },
   { name: 'project-finexyia.jpg', url: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80' },
   { name: 'project-listadecompras.jpg', url: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-osint-toolkit.jpg', url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-task-manager.jpg', url: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-todolist-react.jpg', url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-sosjampa.jpg', url: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80' }
+  { name: 'project-osint-toolkit.jpg', url: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=400&q=80' },
+  { name: 'project-task-manager.jpg', url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=400&q=80' },
+  { name: 'project-todolist-react.jpg', url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80' },
+  { name: 'project-sosjampa.jpg', url: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=80' }
 ];
 
 export default function ProjectsAdmin() {

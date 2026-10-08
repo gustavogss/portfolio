@@ -45,11 +45,11 @@ const CATEGORIES = ['IA & Automação', 'Segurança & Pentest', 'DevSecOps', 'Mo
 const DEFAULT_ASSETS = [
   {
     name: 'course-cybersecurity.jpg',
-    url: 'https://images.unsplash.com/photo-1590065707046-4fde65275b2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGN5YmVyc2VjdXJpdHl8ZW58MHx8MHx8fDA%3D'
+    url: 'https://images.unsplash.com/photo-1590065707046-4fde65275b2e?auto=format&fit=crop&w=400&q=80'
   },
   {
     name: 'course-devops.jpg',
-    url: 'https://images.unsplash.com/photo-1667372335937-d03be6fb0a9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGV2b3BzfGVufDB8fDB8fHww'
+    url: 'https://images.unsplash.com/photo-1667372335937-d03be6fb0a9c?auto=format&fit=crop&w=400&q=80'
   },
   {
     name: 'course-fullstack.jpg',
@@ -57,11 +57,11 @@ const DEFAULT_ASSETS = [
   },
   {
     name: 'course-ia.jpg',
-    url: 'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGlhfGVufDB8fDB8fHww'
+    url: 'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?auto=format&fit=crop&w=400&q=80'
   },
   {
     name: 'course-pentest.jpg',
-    url: 'https://images.unsplash.com/photo-1519575706483-221027bfbb31?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFja2VyfGVufDB8fDB8fHww'
+    url: 'https://images.unsplash.com/photo-1519575706483-221027bfbb31?auto=format&fit=crop&w=400&q=80'
   },
 
   {
@@ -70,7 +70,7 @@ const DEFAULT_ASSETS = [
   },
   {
     name: 'post-magento2.jpg',
-    url: 'https://images.unsplash.com/photo-1652156752342-c786f1e1d1ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFnZW50b3xlbnwwfHwwfHx8MA%3D%3D'
+    url: 'https://images.unsplash.com/photo-1652156752342-c786f1e1d1ce?auto=format&fit=crop&w=400&q=80'
   },
   {
     name: 'post-seguranca-primeiro.jpg',
