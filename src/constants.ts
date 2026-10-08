@@ -29,6 +29,7 @@ const postVibecodingSeguro = 'https://images.unsplash.com/photo-1555066931-4365d
 const postSegurancaPrimeiro = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80';
 const postEmuladorIos = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80';
 const postVibeAgents = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80';
+const postSiteToApp = 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80';
 
 const courseIa = 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=400&q=80';
 const coursePentest = 'https://images.unsplash.com/photo-1601597111158-2fceff270190?auto=format&fit=crop&w=400&q=80';
@@ -137,6 +138,14 @@ export const TECH_CATEGORIES: TechCategory[] = [
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'site-para-app',
+    title: 'Como dobrar o valor do seu produto e fidelizar ainda mais o seu cliente criando um aplicativo do site',
+    summary: 'Você já tem um site? Transforme-o em um aplicativo Android personalizado, agregue valor ao seu produto e ofereça uma nova experiência ao seu cliente.',
+    date: '12 Mai 2026',
+    imageUrl: postSiteToApp,
+    category: 'Mobile'
+  },
   {
     id: 'm1',
     title: 'Como rodar Magento 2 localmente sem custo (usando Docker)',

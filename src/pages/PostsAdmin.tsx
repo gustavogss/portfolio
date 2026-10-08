@@ -21,6 +21,7 @@ const postMagento2 = 'https://images.unsplash.com/photo-1516321318423-f06f85e504
 const postSegurancaPrimeiro = 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80';
 const postVibeAgents = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80';
 const postVibecodingSeguro = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80';
+const postSiteToApp = 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80';
 const projectDelivery = 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80';
 const projectFinexyia = 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80';
 const projectListadecompras = 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80';
@@ -54,6 +55,7 @@ const DEFAULT_ASSETS = [
   { name: 'post-seguranca-primeiro.jpg', url: postSegurancaPrimeiro },
   { name: 'post-vibe-agents.jpg', url: postVibeAgents },
   { name: 'post-vibecoding-seguro.jpg', url: postVibecodingSeguro },
+  { name: 'post-site-to-app.jpg', url: postSiteToApp },
   { name: 'project-delivery.jpg', url: projectDelivery },
   { name: 'project-finexyia.jpg', url: projectFinexyia },
   { name: 'project-listadecompras.jpg', url: projectListadecompras },

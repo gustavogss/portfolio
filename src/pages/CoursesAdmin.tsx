@@ -43,24 +43,79 @@ const initialFormState: CourseFormState = {
 const CATEGORIES = ['IA & Automação', 'Segurança & Pentest', 'DevSecOps', 'Mobile & Frontend', 'Outros'];
 
 const DEFAULT_ASSETS = [
-  { name: 'course-cybersecurity.jpg', url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'course-devops.jpg', url: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=400&q=80' },
-  { name: 'course-fullstack.jpg', url: 'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=400&q=80' },
-  { name: 'course-ia.jpg', url: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=400&q=80' },
-  { name: 'course-pentest.jpg', url: 'https://images.unsplash.com/photo-1601597111158-2fceff270190?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-emulador-ios.jpg', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-magento2.jpg', url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-seguranca-primeiro.jpg', url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-vibe-agents.jpg', url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80' },
-  { name: 'post-vibecoding-seguro.jpg', url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-delivery.jpg', url: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-finexyia.jpg', url: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-listadecompras.jpg', url: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-osint-toolkit.jpg', url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-task-manager.jpg', url: 'https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-todolist-react.jpg', url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80' },
-  { name: 'project-sosjampa.jpg', url: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80' }
+  {
+    name: 'course-cybersecurity.jpg',
+    url: 'https://images.unsplash.com/photo-1590065707046-4fde65275b2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGN5YmVyc2VjdXJpdHl8ZW58MHx8MHx8fDA%3D'
+  },
+  {
+    name: 'course-devops.jpg',
+    url: 'https://images.unsplash.com/photo-1667372335937-d03be6fb0a9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGV2b3BzfGVufDB8fDB8fHww'
+  },
+  {
+    name: 'course-fullstack.jpg',
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'course-ia.jpg',
+    url: 'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGlhfGVufDB8fDB8fHww'
+  },
+  {
+    name: 'course-pentest.jpg',
+    url: 'https://images.unsplash.com/photo-1519575706483-221027bfbb31?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFja2VyfGVufDB8fDB8fHww'
+  },
+
+  {
+    name: 'post-emulador-ios.jpg',
+    url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'post-magento2.jpg',
+    url: 'https://images.unsplash.com/photo-1652156752342-c786f1e1d1ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFnZW50b3xlbnwwfHwwfHx8MA%3D%3D'
+  },
+  {
+    name: 'post-seguranca-primeiro.jpg',
+    url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'post-vibe-agents.jpg',
+    url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'post-vibecoding-seguro.jpg',
+    url: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=400&q=80'
+  },
+
+  {
+    name: 'project-delivery.jpg',
+    url: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-finexyia.jpg',
+    url: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-listadecompras.jpg',
+    url: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-osint-toolkit.jpg',
+    url: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-task-manager.jpg',
+    url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-todolist-react.jpg',
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    name: 'project-sosjampa.jpg',
+    url: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=80'
+  }
 ];
+
+
 
 export default function CoursesAdmin() {
   const { data: courses = [], isLoading } = useCoursesQuery();
