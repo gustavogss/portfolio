@@ -11,7 +11,7 @@ import ProjectsAdmin from './pages/ProjectsAdmin';
 import CoursesAdmin from './pages/CoursesAdmin';
 import SkillsAdmin from './pages/SkillsAdmin';
 import SettingsAdmin from './pages/SettingsAdmin';
-import Error404 from './pages/Error404';
+import ErrorPage from './pages/ErrorPage';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -72,7 +72,9 @@ export default function App() {
                   <Route path="settings" element={<SettingsAdmin />} />
                 </Route>
                 
-                <Route path="*" element={<Error404 />} />
+                <Route path="/error" element={<ErrorPage />} />
+                <Route path="/404" element={<ErrorPage />} />
+                <Route path="*" element={<ErrorPage />} />
               </Routes>
             </BrowserRouter>
           </AuthProvider>

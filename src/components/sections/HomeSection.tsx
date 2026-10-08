@@ -114,7 +114,7 @@ export function HomeSection({ user, onLogin }: { user: FirebaseUser | null, onLo
             <p className="text-xl text-brand-primary font-medium">{settings?.title || 'Engenheiro de Software | Mobile | AppSec'}</p>
           </div>
           <p className="text-slate-400 max-w-xl leading-relaxed">
-            {settings?.description || 'Desenvolvo soluções web e mobile com foco em resultados, segurança, ia integrada e automação.'}
+            {settings?.description || 'Engenheiro de Software com sólida atuação no desenvolvimento Full Stack e Mobile, especializado em arquiteturas robustas e seguras sob a ótica de DevSecOps e AppSec.'}
           </p>
           <div className="flex flex-col gap-3 pt-2 w-full">
             <div className="flex items-center justify-center md:justify-start w-full">

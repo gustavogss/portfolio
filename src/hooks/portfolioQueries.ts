@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import { collection, getDocs, doc, setDoc, deleteDoc, updateDoc, addDoc } from 'firebase/firestore';
-import { db, OperationType, handleFirestoreError } from '../lib/firebase';
+import { db, OperationType, handleFirestoreError, isFirebaseConfigured } from '../lib/firebase';
 import { useTelemetryStore } from '../services/telemetryService';
 import { 
   PROJECTS, 
@@ -13,17 +13,46 @@ import {
   CERTIFICATIONS 
 } from '../constants';
 
-// Helper to fetch and measure latency
-async function fetchWithTiming<T>(entity: string, fetchFn: () => Promise<T>): Promise<T> {
+export const DEFAULT_SKILLS = TECH_CATEGORIES.map((cat, idx) => {
+  const categoryName = cat.title || (cat as any).name || '';
+  const skillsList = cat.items || (cat as any).skills || [];
+  return {
+    ...cat,
+    id: `tc-${idx}`,
+    name: categoryName,
+    title: categoryName,
+    skills: skillsList,
+    items: skillsList,
+  };
+});
+
+export const DEFAULT_SETTINGS = {
+  name: 'Gustavo Souza',
+  title: 'Software Engineer | Full Stack | Mobile | DevSecOps | AppSec',
+  description: 'Engenheiro de Software com sólida atuação no desenvolvimento Full Stack e Mobile, especializado em arquiteturas robustas e seguras sob a ótica de DevSecOps e AppSec.',
+  github: 'https://github.com/gustavogss',
+  linkedin: 'https://www.linkedin.com/in/gustavosouza-jp/',
+  email: 'contato@gustavosouza.dev.br',
+  photoUrl: ''
+};
+
+// Helper to fetch and measure latency with timeout and local fallback
+async function fetchWithTiming<T>(entity: string, fetchFn: () => Promise<T>, fallback: T): Promise<T> {
+  if (!isFirebaseConfigured) {
+    return fallback;
+  }
   const start = performance.now();
   try {
-    const data = await fetchFn();
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error(`Timeout fetching ${entity}`)), 3000);
+    });
+    const data = await Promise.race([fetchFn(), timeoutPromise]);
     const duration = performance.now() - start;
     useTelemetryStore.getState().recordRead(entity, duration, 'NETWORK');
     return data;
   } catch (error) {
-    handleFirestoreError(error, OperationType.LIST, entity);
-    throw error;
+    console.warn(`[Firebase] Carregamento de ${entity} usando fallback estático:`, error);
+    return fallback;
   }
 }
 
@@ -62,7 +91,9 @@ export function useProjectsQuery() {
       const activeDbItems = dbItems.filter(item => !item._deleted);
       const fallbackItems = PROJECTS.filter(p => !deletedIds.includes(p.id) && !activeDbItems.some(dbItem => dbItem.id === p.id));
       return [...activeDbItems, ...fallbackItems];
-    }),
+    }, PROJECTS),
+    initialData: PROJECTS,
+    initialDataUpdatedAt: 0,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
@@ -137,7 +168,9 @@ export function usePostsQuery() {
       const activeDbItems = dbItems.filter(item => !item._deleted);
       const fallbackItems = BLOG_POSTS.filter(p => !deletedIds.includes(p.id) && !activeDbItems.some(dbItem => dbItem.id === p.id));
       return [...activeDbItems, ...fallbackItems];
-    }),
+    }, BLOG_POSTS),
+    initialData: BLOG_POSTS,
+    initialDataUpdatedAt: 0,
     staleTime: 5 * 60 * 1000,
   });
 
@@ -212,7 +245,9 @@ export function useCoursesQuery() {
       const activeDbItems = dbItems.filter(item => !item._deleted);
       const fallbackItems = COURSES.filter(p => !deletedIds.includes(p.id) && !activeDbItems.some(dbItem => dbItem.id === p.id));
       return [...activeDbItems, ...fallbackItems];
-    }),
+    }, COURSES),
+    initialData: COURSES,
+    initialDataUpdatedAt: 0,
     staleTime: 5 * 60 * 1000,
   });
 
@@ -298,21 +333,12 @@ export function useSkillsQuery() {
       const deletedIds = dbItems.filter(item => item._deleted).map(item => item.id);
       const activeDbItems = dbItems.filter(item => !item._deleted);
       
-      const fallbackItems = TECH_CATEGORIES.map((cat, idx) => {
-        const categoryName = cat.title || (cat as any).name || '';
-        const skillsList = cat.items || (cat as any).skills || [];
-        return {
-          ...cat,
-          id: `tc-${idx}`,
-          name: categoryName,
-          title: categoryName,
-          skills: skillsList,
-          items: skillsList,
-        };
-      }).filter(p => !deletedIds.includes(p.id) && !activeDbItems.some(dbItem => dbItem.id === p.id));
+      const fallbackItems = DEFAULT_SKILLS.filter(p => !deletedIds.includes(p.id) && !activeDbItems.some(dbItem => dbItem.id === p.id));
       
       return [...activeDbItems, ...fallbackItems];
-    }),
+    }, DEFAULT_SKILLS),
+    initialData: DEFAULT_SKILLS,
+    initialDataUpdatedAt: 0,
     staleTime: 5 * 60 * 1000,
   });
 
@@ -376,18 +402,11 @@ export function useSettingsQuery() {
     queryKey: ['settings'],
     queryFn: () => fetchWithTiming('settings', async () => {
       const snap = await getDocs(collection(db, 'settings'));
-      const defaultSettings = {
-        name: 'Gustavo Souza',
-        title: 'Software Engineer | Full Stack | Mobile | DevSecOps | AppSec',
-        description: 'Engenheiro de Software com experiência no desenvolvimento Full Stack e Mobile, além de atuar com práticas de DevSecOps e segurança de aplicações (AppSec). Desenvolvo APIs e interfaces modernas com foco em código limpo e automação de testes. Atualmente, realizo estudos práticos em Inteligência Artificial e orquestração de LLMs para automação de processos.',
-        github: 'https://github.com/gustavogss',
-        linkedin: 'https://www.linkedin.com/in/gustavosouza-jp/',
-        email: 'contato@gustavosouza.dev.br',
-        photoUrl: ''
-      };
-      if (snap.empty) return defaultSettings;
-      return { ...defaultSettings, ...snap.docs[0].data(), id: snap.docs[0].id };
-    }),
+      if (snap.empty) return DEFAULT_SETTINGS;
+      return { ...DEFAULT_SETTINGS, ...snap.docs[0].data(), id: snap.docs[0].id };
+    }, DEFAULT_SETTINGS),
+    initialData: DEFAULT_SETTINGS,
+    initialDataUpdatedAt: 0,
     staleTime: 5 * 60 * 1000,
   });
 

@@ -110,7 +110,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
                 className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-xl text-sm transition-all border border-white/5"
               >
                 <Home className="w-4 h-4" />
-                <span>Voltar ao Início</span>
+                <span>Voltar para a página de início</span>
               </button>
             </div>
           </div>

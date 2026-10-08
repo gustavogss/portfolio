@@ -4,6 +4,7 @@ import { BookOpen, ExternalLink, X, Calendar, Award, Clock, CheckCircle2 } from 
 import { usePortfolio } from '../../contexts/PortfolioContext';
 import { Course, COURSES } from '../../constants';
 import { MarkdownRenderer } from '../MarkdownRenderer';
+import { LazyImage } from '../LazyImage';
 
 export function CoursesSection() {
   const { courses } = usePortfolio();
@@ -87,18 +88,18 @@ const CourseCard: React.FC<{ course: Course; onOpen: () => void }> = ({ course, 
       <div className="glass-morphism rounded-3xl overflow-hidden h-full flex flex-col group w-full max-w-[380px] md:max-w-none hover:border-brand-primary/30 transition-all shadow-lg hover:shadow-2xl hover:shadow-brand-primary/20">
         {/* Course Card Header Image */}
         <div className="h-48 overflow-hidden relative">
-          <img 
+          <LazyImage 
             src={course.imageUrl} 
             alt={course.title} 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
           />
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-10 pointer-events-none">
             <span className="px-3 py-1 bg-slate-900/80 backdrop-blur-sm text-slate-300 text-[10px] font-bold uppercase rounded-lg flex items-center gap-1">
               <Calendar className="w-3 h-3 text-brand-primary" />
               {course.date}
             </span>
           </div>
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 z-10 pointer-events-none">
             <span className="px-3 py-1 bg-brand-primary/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase rounded-lg">
               {course.category}
             </span>
@@ -197,6 +198,8 @@ const CourseModal: React.FC<{ course: Course; onClose: () => void; currentUrl: s
           <img 
             src={course.imageUrl} 
             alt={course.title} 
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-6 left-6 right-6 z-20">

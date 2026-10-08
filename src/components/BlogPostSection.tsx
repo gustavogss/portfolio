@@ -73,6 +73,8 @@ export function BlogPostSection({ postId, onBack }: BlogPostSectionProps) {
         <img 
           src={post.imageUrl} 
           alt={post.title} 
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
@@ -558,7 +560,7 @@ function BlogContentSiteToApp() {
           <ExternalLink className="w-4 h-4 opacity-70" />
         </a>
         <span className="block mt-3 text-xs text-slate-400">
-          Repositório: <code className="text-brand-secondary font-mono">github.com/gustavogss/SEU_REPOSITORIO_GITHUB</code>
+          Repositório: <code className="text-brand-secondary font-mono">github.com/gustavogss/gustavoapp</code>
         </span>
       </div>
 
@@ -709,10 +711,10 @@ function BlogContentSiteToApp() {
         </div>
         <pre className="p-4 overflow-x-auto text-sm font-mono text-slate-300 leading-relaxed scrollbar-thin">
           <code>{`# 1. Clone o repositório base
-git clone https://github.com/gustavogss/SEU_REPOSITORIO_GITHUB.git
+git clone https://github.com/gustavogss/gustavoapp.git
 
 # 2. Acesse a pasta do projeto
-cd SEU_REPOSITORIO_GITHUB
+cd gustavoapp
 
 # 3. Instale as dependências
 npm install
@@ -1073,7 +1075,7 @@ eas build -p android --profile production`}</code>
           Acesse agora o repositório, faça o clone e comece a criar aplicativos para os seus sites ou clientes hoje mesmo.
         </p>
         <a 
-          href="https://github.com/gustavogss/SEU_REPOSITORIO_GITHUB" 
+          href="https://github.com/gustavogss/gustavoapp" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-2xl font-bold transition-all shadow-lg hover:shadow-brand-primary/30"

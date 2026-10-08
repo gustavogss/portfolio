@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { usePortfolio } from '../../contexts/PortfolioContext';
+import { LazyImage } from '../LazyImage';
 
 export function BlogSection({ onReadPost }: { onReadPost: (id: string) => void }) {
   const { blogPosts } = usePortfolio();
@@ -68,17 +69,17 @@ const BlogCard: React.FC<{ post: any; onReadPost: (id: string) => void }> = ({ p
     >
       <div className="glass-morphism rounded-3xl overflow-hidden h-full flex flex-col group w-full max-w-[380px] md:max-w-none hover:border-brand-primary/30 transition-all shadow-lg hover:shadow-2xl hover:shadow-brand-primary/20">
         <div className="h-48 overflow-hidden relative">
-          <img 
+          <LazyImage 
             src={post.imageUrl} 
             alt={post.title} 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
           />
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-10 pointer-events-none">
             <span className="px-3 py-1 bg-slate-900/80 backdrop-blur-sm text-slate-300 text-[10px] font-bold uppercase rounded-lg">
               {post.date}
             </span>
           </div>
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 z-10 pointer-events-none">
             <span className="px-3 py-1 bg-brand-primary/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase rounded-lg">
               {post.category}
             </span>
