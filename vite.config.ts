@@ -107,7 +107,7 @@ export default defineConfig(({mode}) => {
       }),
     ].filter(Boolean),
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      'process.env.GEMINI_API_KEY': JSON.stringify(process.env.GEMINI_API_KEY || env.GEMINI_API_KEY || ''),
     },
     resolve: {
       alias: {
@@ -125,7 +125,7 @@ export default defineConfig(({mode}) => {
               if (id.includes('firebase')) return 'vendor-firebase';
               if (id.includes('html2pdf') || id.includes('jspdf') || id.includes('html2canvas')) return 'vendor-pdf';
               if (id.includes('motion') || id.includes('lucide-react')) return 'vendor-ui';
-              if (id.includes('react')) return 'vendor-react';
+              if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/')) return 'vendor-react';
               return 'vendor';
             }
           },
